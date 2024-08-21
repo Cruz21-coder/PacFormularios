@@ -3,21 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plantilla PDF</title>
+    <title>Formulario con Plantilla PDF</title>
 </head>
 <body>
-    <h2>Formulario para Generar PDF desde Plantilla</h2>
+    <h2>Solicitud de crédito</h2>
     <form id="miFormulario">
-        <label for="nombre">Nombre:</label><br>
-        <input type="text" id="nombre" name="nombre"><br><br>
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email"><br><br>
-        <label for="mensaje">Mensaje:</label><br>
-        <textarea id="mensaje" name="mensaje"></textarea><br><br>
-        <input type="submit" value="Generar PDF">
-    </form>
+        <label for="monto">Monto:</label><br>
+        <input type="number" id="monto" name="monto"><br><br>
 
-    <!-- Librería PDF-LIB -->
+        <label for="promocode">Promocode:</label><br>
+        <input type="text" id="promocode" name="promocode"><br><br>
+
+
+        <H1>Nombre representante legal </H1>
+
+        <label for="nombrelegal">Nombre:</label><br>
+        <input type="text" id="nombrelegal" name="nombre"><br><br>
+
+        <label for="emaillegal">Email:</label><br>
+        <input type="email" id="emaillegal" name="email"><br><br>
+
+        <!--<label for="opcion1">
+            <input type="radio" id="fisicalegal" name="opcion" value="opcion1">
+            Persona Fisica
+        </label><br>
+        
+        <label for="opcion2">
+            <input type="radio" id="morallegal" name="opcion" value="opcion2">
+            Persona Moral 
+        </label><br> <br> <br>-->
+
+
+        <label for="fechalegal">Fecha de Nacimiento:</label><br>
+        <input type="date" id="fechalegal" name="fecha"><br><br>
+
+        <label for="lugarlegal">Lugar de Nacimiento:</label><br>
+        <input type="text" id="lugarlegal" name="lugar"><br><br>
+
+        
+        <label for="rfclegal">RFC:</label><br>
+        <input type="text" id="rfclegal" name="RFC"><br><br>
+
+        <label for="curplegal">CURP:</label><br>
+        <input type="text" id="curplegal" name="CURP"><br><br>
+
+        <label for="civil">Estado Civil:</label><br>
+        <input type="text" id="civil" name="civil"><br><br> 
+
+        <label for="regimen"> Regimen de casado:</label><br>
+        <input type="text" id="regimen" name="regimen"><br><br>
+        
+        
+        <H1>Domicilio representante legal </H1>
+
+        <label for="cpdomicilio">C.P:</label><br>
+        <input type="number" id="cpdomicilio" name="cp"><br><br>
+
+        <label for="domiciliodomicilio">Domicilio:</label><br>
+        <input type="text" id="domiciliodomicilio" name="domicilio"><br><br>
+
+        <label for="coloniadomicilio">Colonia:</label><br>
+        <input type="text" id="coloniadomicilio" name="colonia"><br><br>
+
+        
+        <label for="ciudaddomicilio">Ciudad:</label><br>
+        <input type="text" id="ciudaddomicilio" name="ciudad"><br><br>
+
+        <label for="municipiodomicilio">Municipio:</label><br>
+        <input type="text" id="municipiodomicilio" name="municipio"><br><br>
+
+        <label for="estadodomicilio">Estado:</label><br>
+        <input type="text" id="estadodomicilio" name="estado"><br><br>
+
+        <label for="tiempodomicilio">Tiempo en domicilio:</label><br>
+        <input type="text" id="tiempodomicilio" name="colonia"><br><br>
+
+        <!--<label for="opcion1">
+            <input type="radio" id="rentodomicilio" name="rentodomicilio" value="rento">
+            Rento
+        </label><br>
+        
+        <label for="opcion2">
+            <input type="radio" id="propiodomicilio" name="propiodomicilio" value="propio">
+            Propio
+        </label><br> <br>-->
+
+        <label for="telefonodomicilio">Telefono:</label><br>
+        <input type="number" id="telefonodomicilio" name="estado"><br><br>
+
+        <H1>Datos del negocio operativo</H1>
+
+        <label for="nombrenegocio">Nombre Comercial:</label><br>
+        <input type="text" id="nombrenegocio" name="cp"><br><br>
+
+        <label for="cpnegocio">C.P:</label><br>
+        <input type="number" id="cpnegocio" name="cp"><br><br>
+
+        <label for="domicilionegocio">Domicilio:</label><br>
+        <input type="text" id="domicilionegocio" name="domicilio"><br><br>
+
+        <label for="colonianegocio">Colonia:</label><br>
+        <input type="text" id="colonianegocio" name="colonia"><br><br>
+
+        
+        <label for="ciudadnegocio">Ciudad:</label><br>
+        <input type="text" id="ciudadnegocio" name="ciudad"><br><br>
+
+        <label for="municipionegocio">Municipio:</label><br>
+        <input type="text" id="municipionegocio" name="municipio"><br><br>
+
+        <label for="estadonegocio">Estado:</label><br>
+        <input type="text" id="estadonegocio" name="estado"><br><br>
+
+        <label for="tiemponegocio">Tiempo en domicilio:</label><br>
+        <input type="text" id="tiemponegocio" name="colonia"><br><br>
+
+        <!--<label for="opcion1">
+            <input type="radio" id="Rentonegocio" name="Rentonegocio" value="opcion1">
+            Rento
+        </label><br>
+        
+        <label for="opcion2">
+            <input type="radio" id="propionegocio" name="propionegocio" value="opcion2">
+            Propio
+        </label><br> <br>-->
+
+        <label for="telefononegocio">Telefono:</label><br>
+        <input type="number" id="telefononegocio" name="estado"><br><br>
+
+        <H1>Funcionamiento del negocio</H1>
+
+        <label for="anosfuncionamiento">Años con el negocio:</label><br>
+        <input type="number" id="anosfuncionamiento" name="cp"><br><br>
+
+        <label for="recursofuncionamiento">En que utilizara el Recurso:</label><br>
+        <input type="text" id="recursofuncionamiento" name="cp"><br><br>
+
+        <label for="ingresfuncionamiento">Ingresos al año:</label><br>
+        <input type="number" id="ingresfuncionamiento" name="domicilio"><br><br>
+
+        <label for="actividadfuncionamiento">Actividad del negocio:</label><br>
+        <input type="text" id="actividadfuncionamiento" name="colonia"><br><br>
+
+        <H1>Funcionamiento del negocio</H1>
+
+        <label for="banco">Banco:</label><br>
+        <input type="text" id="banco" name="cp"><br><br>
+
+        <label for="clabeinterbancaria">CLABE Interbancaria:</label><br>
+        <input type="text" id="clabeinterbancaria" name="cp"><br><br>
+
+        <H1>Referencias(2)</H1>
+        <H3>Familiares</H3>
+
+        <label for="nombrefamiliar1">Nombre:</label><br>
+        <input type="text" id="nombrefamiliar1" name="cp"><br><br>
+
+        <label for="parentescofamiliar1">Parentesco:</label><br>
+        <input type="text" id="parentescofamiliar1" name="cp"><br><br>
+
+        <label for="telefonofamiliar1">Telefono:</label><br>
+        <input type="number" id="telefonofamiliar1" name="estado"><br><br>
+        <br><br><br>
+        <label for="nombrefamiliar2">Nombre:</label><br>
+        <input type="text" id="nombrefamiliar2" name="cp"><br><br>
+
+        <label for="parentescofamiliar2">Parentesco:</label><br>
+        <input type="text" id="parentescofamiliar2" name="cp"><br><br>
+
+        <label for="telefonofamiliar2">Telefono:</label><br>
+        <input type="number" id="telefonofamiliar2" name="estado"><br><br>
+
+        <input type="submit" value="Generar PDF">
+
+    </form>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
     <script src="index.js"></script>
 </body>
