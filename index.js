@@ -4,12 +4,16 @@ window.onload = function() {
     form.addEventListener('submit', async function(event) {
         event.preventDefault(); 
 
+        const formData = new FormData(form);
+        const data = {};
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
+
         const monto = document.getElementById('monto').value;
         const promocode = document.getElementById('promocode').value;
         const nombrelegal = document.getElementById('nombrelegal').value;
         const emaillegal = document.getElementById('emaillegal').value;
-        //const fisicalegal = document.getElementById('fisicalegal').value;
-        //const morallegal = document.getElementById('morallegal').value;
         const fechalegal = document.getElementById('fechalegal').value;
         const lugarlegal = document.getElementById('lugarlegal').value;
         const rfclegal = document.getElementById('rfclegal').value;
@@ -23,8 +27,6 @@ window.onload = function() {
         const municipiodomicilio = document.getElementById('municipiodomicilio').value;
         const estadodomicilio = document.getElementById('estadodomicilio').value;
         const tiempodomicilio = document.getElementById('tiempodomicilio').value;
-        //const rentodomicilio = document.getElementById('rentodomicilio').value;
-        //const propiodomicilio = document.getElementById('propiodomicilio').value;
         const telefonodomicilio = document.getElementById('telefonodomicilio').value;
         const nombrenegocio = document.getElementById('nombrenegocio').value;
         const cpnegocio = document.getElementById('cpnegocio').value;
@@ -34,8 +36,6 @@ window.onload = function() {
         const municipionegocio = document.getElementById('municipionegocio').value;
         const estadonegocio = document.getElementById('estadonegocio').value;
         const tiemponegocio = document.getElementById('tiemponegocio').value;
-        //const Rentonegocio = document.getElementById('Rentonegocio').value;
-        //const propionegocio = document.getElementById('propionegocio').value;
         const telefononegocio = document.getElementById('telefononegocio').value;
         const anosfuncionamiento = document.getElementById('anosfuncionamiento').value;
         const recursofuncionamiento = document.getElementById('recursofuncionamiento').value;
@@ -53,16 +53,31 @@ window.onload = function() {
         const pdfDoc = await PDFLib.PDFDocument.load(existingPdfBytes);
         const pages = pdfDoc.getPages();
         const firstPage = pages[0];
-
         const { width, height } = firstPage.getSize();
         const fontSize = 12;
+
+        if (data.opcionpersona === 'opcion1') {
+            firstPage.drawText('X', { x: 105, y: height - 184, size: fontSize });
+        } else if (data.opcionpersona === 'opcion2') {
+            firstPage.drawText('X', { x: 225, y: height - 184, size: fontSize });
+        }
+
+        if (data.tipodomicilio === 'rento') {
+            firstPage.drawText('X', { x: 340, y: height - 310, size: fontSize });
+        } else if (data.tipodomicilio === 'propio') {
+            firstPage.drawText('X', { x: 440, y: height - 310, size: fontSize });
+        }
+
+        if (data.tiponegocio === 'rento') {
+            firstPage.drawText('X', { x: 515, y: height - 382, size: fontSize });
+        } else if (data.tiponegocio === 'propio') {
+            firstPage.drawText('X', { x: 95, y: height - 396, size: fontSize });
+        }
 
         firstPage.drawText(monto, { x: 85, y: height - 120, size: fontSize });
         firstPage.drawText(promocode, { x: 353, y: height - 120, size: fontSize });
         firstPage.drawText(nombrelegal, { x: 93, y: height - 170, size: fontSize });
         firstPage.drawText(emaillegal, { x: 330, y: height - 170, size: fontSize });
-        //firstPage.drawText(fisicalegal, { x: 100, y: height - 180, size: fontSize });
-        //firstPage.drawText(morallegal, { x: 100, y: height - 200, size: fontSize });
         firstPage.drawText(fechalegal, { x: 175, y: height - 199, size: fontSize });
         firstPage.drawText(lugarlegal, { x: 250, y: height - 199, size: fontSize });
         firstPage.drawText(rfclegal, { x: 75, y: height - 212, size: fontSize });
@@ -76,8 +91,6 @@ window.onload = function() {
         firstPage.drawText(municipiodomicilio, { x: 258, y: height - 295, size: fontSize });
         firstPage.drawText(estadodomicilio, { x: 425, y: height - 295, size: fontSize });
         firstPage.drawText(tiempodomicilio, { x: 142, y: height - 310, size: fontSize });
-        //firstPage.drawText(rentodomicilio, { x: 100, y: height - 480, size: fontSize });
-        //firstPage.drawText(propiodomicilio, { x: 100, y: height - 500, size: fontSize });
         firstPage.drawText(telefonodomicilio, { x: 500, y: height - 310, size: fontSize });
         firstPage.drawText(nombrenegocio, { x: 141, y: height - 353, size: fontSize });
         firstPage.drawText(cpnegocio, { x: 295, y: height - 353, size: fontSize });
@@ -87,8 +100,6 @@ window.onload = function() {
         firstPage.drawText(municipionegocio, { x: 438, y: height - 367, size: fontSize });
         firstPage.drawText(estadonegocio, { x: 89, y: height - 382, size: fontSize });
         firstPage.drawText(tiemponegocio, { x: 361, y: height - 382, size: fontSize });
-        //firstPage.drawText(Rentonegocio, { x: 100, y: height - 700, size: fontSize });
-        //firstPage.drawText(propionegocio, { x: 100, y: height - 720, size: fontSize });
         firstPage.drawText(telefononegocio, { x: 293, y: height - 396, size: fontSize });
         firstPage.drawText(anosfuncionamiento, { x: 141, y: height - 440, size: fontSize });
         firstPage.drawText(recursofuncionamiento, { x: 420, y: height - 440, size: fontSize });
