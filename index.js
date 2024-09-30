@@ -123,9 +123,16 @@ window.onload = function() {
             telefonodomicilio: { x: 103, y: height - 325 }
         });
 
+        const coordenadasHousolFisico = (height) => ({
+            fechalegal:{ x: 138, y: height - 229 },
+            nombrelegal: { x: 138, y: height - 229 },
+
+        });
+
         await Promise.all([
-            generateAndDownloadPdf('src/aspiria/SolicituddeCredito.pdf', 'AspiriaSolicitudCredito.pdf', coordenadasAspiriaCredito, data),
-            generateAndDownloadPdf('src/aspiria/PersonaFisica.pdf', 'AspiriaPersonaFisica.pdf', coordenadasAspiriaFisica, data)
+            generateAndDownloadPdf('src/aspiria/AspiriaCredito.pdf', 'AspiriaSolicitudCredito.pdf', coordenadasAspiriaCredito, data),
+            generateAndDownloadPdf('src/aspiria/AspiriaFisica.pdf', 'AspiriaPersonaFisica.pdf', coordenadasAspiriaFisica, data),
+            generateAndDownloadPdf('src/housol/HousolFisica.pdf', 'HousolPersonaFisica.pdf', coordenadasHousolFisico, data)
         ]);
     });
 };
