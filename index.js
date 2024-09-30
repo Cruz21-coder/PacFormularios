@@ -33,8 +33,8 @@ window.onload = function() {
                     }
                 });
 
-                if (fileName === 'AspiraSolicitudCredito.pdf') {
-                    console.log("Aplicando condicionales específicas para Aspiria");
+                if (fileName === 'AspiriaSolicitudCredito.pdf') {
+                    console.log("Aplicando condicionales específicas para AspiriaSolicitudDeCredito");
 
                     if (data.opcionpersona === 'opcion1') {
                         firstPage.drawText('X', { x: 105, y: height - 184, size: fontSize });
@@ -70,7 +70,7 @@ window.onload = function() {
             }
         };
 
-        const coordenadasAspiria = (height) => ({
+        const coordenadasAspiriaCredito = (height) => ({
             monto: { x: 85, y: height - 120 },
             promocode: { x: 353, y: height - 120 },
             nombrelegal: { x: 93, y: height - 170 },
@@ -112,16 +112,20 @@ window.onload = function() {
             telefonofamiliar2: { x: 73, y: height - 668 }
         });
 
-        const coordenadasPremo = (height) => ({
-            monto: { x: 85, y: height - 120 },
-            nombrelegal: { x: 60, y: height - 455 },
-            rfclegal: { x: 90, y: height - 403 },
-            domiciliodomicilio: { x: 100, y: height - 385 }
+        const coordenadasAspiriaFisica = (height) => ({
+            nombrelegal: { x: 138, y: height - 229 },
+            rfclegal: { x: 78, y: height - 249 },
+            domiciliodomicilio: { x: 95, y: height - 268 },
+            coloniadomicilio: { x: 90, y: height - 288 },
+            municipiodomicilio: { x: 96, y: height - 306 },
+            estadodomicilio: { x: 295, y: height - 306 },
+            cpdomicilio: { x: 485, y: height - 306 },
+            telefonodomicilio: { x: 103, y: height - 325 }
         });
 
         await Promise.all([
-            generateAndDownloadPdf('src/aspiria/SolicituddeCredito.pdf', 'AspiraSolicitudCredito.pdf', coordenadasAspiria, data),
-            generateAndDownloadPdf('src/premo/FormatoautorizacionBuroPREMOSFP.pdf', 'FormularioPremo.pdf', coordenadasPremo, data)
+            generateAndDownloadPdf('src/aspiria/SolicituddeCredito.pdf', 'AspiriaSolicitudCredito.pdf', coordenadasAspiriaCredito, data),
+            generateAndDownloadPdf('src/aspiria/PersonaFisica.pdf', 'AspiriaPersonaFisica.pdf', coordenadasAspiriaFisica, data)
         ]);
     });
 };
