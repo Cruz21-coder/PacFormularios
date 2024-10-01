@@ -130,6 +130,7 @@ window.onload = function() {
 
         const coordenadasHousolMoral = (height) => ({
             fechalegal:{ x: 138, y: height - 229 },
+            nombrelegal: { x: 138, y: height - 229 },
             nombrelegal: { x: 138, y: height - 229 }
         });
 
