@@ -34,7 +34,7 @@ window.onload = function() {
                 });
 
                 if (fileName === 'AspiriaSolicitudCredito.pdf') {
-                    console.log("Aplicando condicionales específicas para AspiriaSolicitudDeCredito");
+                    console.log("Aplicando condicionales específicas para AspiriaSolicitudCredito");
 
                     if (data.opcionpersona === 'opcion1') {
                         firstPage.drawText('X', { x: 105, y: height - 184, size: fontSize });
@@ -125,15 +125,24 @@ window.onload = function() {
 
         const coordenadasHousolFisico = (height) => ({
             fechalegal:{ x: 138, y: height - 229 },
-            nombrelegal: { x: 138, y: height - 229 },
-
+            nombrelegal: { x: 138, y: height - 229 }
         });
 
-        await Promise.all([
-            generateAndDownloadPdf('src/aspiria/AspiriaCredito.pdf', 'AspiriaSolicitudCredito.pdf', coordenadasAspiriaCredito, data),
-            generateAndDownloadPdf('src/aspiria/AspiriaFisica.pdf', 'AspiriaPersonaFisica.pdf', coordenadasAspiriaFisica, data),
-            generateAndDownloadPdf('src/housol/HousolFisica.pdf', 'HousolPersonaFisica.pdf', coordenadasHousolFisico, data)
-        ]);
+        const coordenadasHousolMoral = (height) => ({
+            fechalegal:{ x: 138, y: height - 229 },
+            nombrelegal: { x: 138, y: height - 229 }
+        });
+
+        const opcionPersona = data.opcionpersona;
+
+        if (opcionPersona === 'fisica') { // Persona Física
+            await generateAndDownloadPdf('src/aspiria/AspiriaFisica.pdf', 'AspiriaPersonaFisica.pdf', coordenadasAspiriaFisica, data);
+            await generateAndDownloadPdf('src/housol/HousolFisica.pdf', 'HousolPersonaFisica.pdf', coordenadasHousolFisico, data);
+        } else if (opcionPersona === 'moral') { // Persona Moral
+            await generateAndDownloadPdf('src/housol/HousolMoral.pdf', 'HousolPersonaMoral.pdf', coordenadasHousolMoral, data);
+        } else if (opcionPersona === 'fisiactiviades') { // Persona Física con Actividades Empresariales
+            await generateAndDownloadPdf('src/aspiria/AspiriaCredito.pdf', 'AspiriaSolicitudCredito.pdf', coordenadasAspiriaCredito, data);
+        }
     });
 };
 
