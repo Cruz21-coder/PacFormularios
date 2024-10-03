@@ -66,6 +66,48 @@ window.onload = function() {
             }
         };
 
+        const coordenadasAspiriaCredito = (pages) => ({
+            0: { 
+                nombre: { x: 138, y: 229 },  
+                rfc: { x: 138, y: 250 }
+            }
+        });
+
+        const coordenadasAspiriaFisica = (pages) => ({
+            0: { 
+                nombre: { x: 138, y: 229 },  
+                rfc: { x: 138, y: 250 }
+            }
+        });
+
+        const coordenadasHousolFisica = (pages) => ({
+            0: { 
+                nombre: { x: 138, y: 229 },  
+                rfc: { x: 138, y: 250 }
+            }
+        });
+
+        const coordenadasHousolMoral = (pages) => ({
+            0: { 
+                nombre: { x: 138, y: 229 },  
+                rfc: { x: 138, y: 250 }
+            }
+        });
+
+        const coordenadasCreditoHousolFisica = (pages) => ({
+            0: { 
+                nombre: { x: 138, y: 229 },  
+                rfc: { x: 138, y: 250 }
+            }
+        });
+
+        const coordenadasCreditoHousolmoral = (pages) => ({
+            0: { 
+                nombre: { x: 138, y: 229 },  
+                rfc: { x: 138, y: 250 }
+            }
+        });
+
         // Define coordenadas de los PDFs por página
         const coordenadasCreditoPF = (pages) => ({
             0: { // Página 1
@@ -112,7 +154,7 @@ window.onload = function() {
         const opcionPersona = data.tipo_solicitante;
 
         if (opcionPersona === 'fisica') {
-            
+            await generateAndDownloadPdf('src/aspiria/AspiriaFisica.pdf', 'AspiriaPersonaFisica.pdf', coordenadasAspiriaFisica, data);
         } else if (opcionPersona === 'fisica_actividad_empresarial') {
             
         } else if (opcionPersona === 'moral') {
