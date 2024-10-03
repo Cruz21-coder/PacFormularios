@@ -8,7 +8,93 @@
 <body>
     <h2>Solicitud de crédito</h2>
     <form id="miFormulario">
+        <!-- Tipo de solicitante -->
+        <label for="fisica">
+            <input type="radio" id="fisica" name="tipo_solicitante" value="fisica">
+            Persona Física
+        </label><br>
 
+        <label for="fisica_actividad_empresarial">
+            <input type="radio" id="fisica_actividad_empresarial" name="tipo_solicitante" value="fisica_actividad_empresarial">
+            Persona Física con Actividad Empresarial (PFAE)
+        </label><br>
+
+        <label for="moral">
+            <input type="radio" id="moral" name="tipo_solicitante" value="moral">
+            Persona Moral (PM)
+        </label><br><br>
+
+        <!-- Datos Generales -->
+        <h3>Datos Generales</h3>
+
+        <label for="nombre">Nombre del Solicitante (Persona Física o Razón Social):</label><br>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+
+        <label for="rfc">RFC o CURP:</label><br>
+        <input type="text" id="rfc" name="rfc" required><br><br>
+
+        <label for="domicilio">Domicilio:</label><br>
+        <input type="text" id="domicilio" name="domicilio" required><br><br>
+
+        <label for="colonia">Colonia:</label><br>
+        <input type="text" id="colonia" name="colonia" required><br><br>
+
+        <label for="municipio">Municipio:</label><br>
+        <input type="text" id="municipio" name="municipio" required><br><br>
+
+        <label for="estado">Estado:</label><br>
+        <input type="text" id="estado" name="estado" required><br><br>
+
+        <label for="codigo_postal">Código Postal:</label><br>
+        <input type="text" id="codigo_postal" name="codigo_postal" required><br><br>
+
+        <label for="telefono">Teléfono(s):</label><br>
+        <input type="tel" id="telefono" name="telefono" required><br><br>
+
+        <!-- Firma Electrónica Avanzada (solo si aplica) -->
+        <h3>Firma Electrónica Avanzada</h3>
+        <p>Este campo solo es necesario para solicitantes con firma electrónica avanzada.</p>
+        <label for="firma_electronica">Firma Electrónica Avanzada:</label><br>
+        <input type="text" id="firma_electronica" name="firma_electronica" style="display:none;"><br><br>
+
+        <!-- Datos para Persona Moral (si aplica) -->
+        <h3>Datos para Persona Moral (si aplica)</h3>
+        <label for="representante_legal">Nombre del Representante Legal:</label><br>
+        <input type="text" id="representante_legal" name="representante_legal" style="display:none;"><br><br>
+
+        <!-- Firma de la Autorización -->
+        <h3>Firma de la Autorización</h3>
+
+        <label for="lugar_fecha">Lugar y Fecha en que se firma la autorización:</label><br>
+        <input type="text" id="lugar_fecha" name="lugar_fecha" required><br><br>
+
+        <label for="funcionario">Nombre del Funcionario que Recaba la Autorización:</label><br>
+        <input type="text" id="funcionario" name="funcionario" required><br><br>
+
+        <label for="firma_solicitante">Nombre y Firma del Solicitante o Representante Legal:</label><br>
+        <input type="text" id="firma_solicitante" name="firma_solicitante" required><br><br>
+
+        <!-- Uso Exclusivo de la Empresa -->
+        <h3>Uso Exclusivo de la Empresa</h3>
+
+        <label for="fecha_consulta_bc">Fecha de Consulta al Buró de Crédito (BC):</label><br>
+        <input type="date" id="fecha_consulta_bc" name="fecha_consulta_bc"><br><br>
+
+        <label for="folio_consulta_bc">Folio de Consulta al Buró de Crédito (BC):</label><br>
+        <input type="text" id="folio_consulta_bc" name="folio_consulta_bc"><br><br>
+
+        <input type="submit" value="Generar PDF">
+    </form>
+
+    <!-- Cargar librería PDF-Lib -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
+
+
+
+<!--
         <label for="fisica">
             <input type="radio" id="fisicalegal" name="opcionpersona" value="fisica">
             Persona Física
@@ -180,11 +266,4 @@
 
         <label for="telefonofamiliar2">Teléfono:</label><br>
         <input type="number" id="telefonofamiliar2" name="telefonofamiliar2"><br><br> 
-
-        <input type="submit" value="Generar PDF">
-    </form>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
-    <script src="index.js"></script>
-</body>
-</html>
+        -->
