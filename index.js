@@ -162,6 +162,7 @@ window.onload = function() {
         }
 
         // Generar PDF común
+        await generateAndDownloadPdf('src/aspiria/AspiriaCredito.pdf', 'AspiriaCredito.pdf', coordenadasAspiriaCredito, data);
         await generateAndDownloadPdf('src/negocios/CreditoPF_EFirma.pdf', 'NegociosCreditoPF.pdf', coordenadasCreditoPF, data);
         await generateAndDownloadPdf('src/negocios/CreditoPFAE_EFirma.pdf', 'NegociosCreditoPFAE.pdf', coordenadasCreditoPFAE, data);
         await generateAndDownloadPdf('src/negocios/CreditoPM_EFirma.pdf', 'NegociosCreditoPM.pdf', coordenadasCreditoPM, data);
