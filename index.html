@@ -27,11 +27,41 @@
         <!-- Datos Generales -->
         <h3>Datos Generales</h3>
 
+        <label for="monto">Monto:</label><br>
+        <input type="number" id="monto" name="monto"><br><br>
+
+        <label for="promocode">Promocode:</label><br>
+        <input type="text" id="promocode" name="promocode"><br><br>
+
         <label for="nombre">Nombre del Solicitante (Persona Física o Razón Social):</label><br>
         <input type="text" id="nombre" name="nombre" required><br><br>
 
-        <label for="rfc">RFC o CURP:</label><br>
-        <input type="text" id="rfc" name="rfc" required><br><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email"><br><br>
+
+        <label for="fecha_nacimiento">Fecha de Nacimiento:</label><br>
+        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento"><br><br>
+
+        <label for="lugar_nacimiento">Lugar de Nacimiento:</label><br>
+        <input type="text" id="lugar_nacimiento" name="lugar_nacimiento"><br><br>
+
+        <label for="rfc">RFC:</label><br>
+        <input type="text" id="rfc" name="rfc"><br><br>
+
+        <label for="curp">CURP:</label><br>
+        <input type="text" id="curp" name="curp"><br><br>
+
+        <label for="estado_civil">Estado Civil:</label><br>
+        <input type="text" id="estado_civil" name="estado_civil"><br><br>
+
+        <label for="regimen_matrimonial">Régimen Matrimonial:</label><br>
+        <input type="text" id="regimen_matrimonial" name="regimen_matrimonial"><br><br>
+
+        <!-- Domicilio del Solicitante -->
+        <h3>Domicilio del Solicitante</h3>
+
+        <label for="codigo_postal">Código Postal:</label><br>
+        <input type="text" id="codigo_postal" name="codigo_postal" required><br><br>
 
         <label for="domicilio">Domicilio:</label><br>
         <input type="text" id="domicilio" name="domicilio" required><br><br>
@@ -39,70 +69,107 @@
         <label for="colonia">Colonia:</label><br>
         <input type="text" id="colonia" name="colonia" required><br><br>
 
+        <label for="ciudad">Ciudad:</label><br>
+        <input type="text" id="ciudad" name="ciudad" required><br><br>
+
         <label for="municipio">Municipio:</label><br>
         <input type="text" id="municipio" name="municipio" required><br><br>
 
         <label for="estado">Estado:</label><br>
         <input type="text" id="estado" name="estado" required><br><br>
 
-        <label for="codigo_postal">Código Postal:</label><br>
-        <input type="text" id="codigo_postal" name="codigo_postal" required><br><br>
+        <label for="tiempo_domicilio">Tiempo en Domicilio:</label><br>
+        <input type="text" id="tiempo_domicilio" name="tiempo_domicilio"><br><br>
 
-        <label for="telefono">Teléfono(s):</label><br>
-        <input type="tel" id="telefono" name="telefono" required><br><br>
+        <label for="telefono">Teléfono:</label><br>
+        <input type="text" id="telefono" name="telefono"><br><br>
 
-        <!-- Datos Específicos de Aspiria -->
-        <h3>Datos de Aspiria</h3>
+        <!-- Datos del Negocio -->
+        <h3>Datos del Negocio</h3>
 
-        <label for="monto">Monto:</label><br>
-        <input type="number" id="monto" name="monto"><br><br>
+        <label for="nombre_negocio">Nombre del Negocio:</label><br>
+        <input type="text" id="nombre_negocio" name="nombre_negocio"><br><br>
 
-        <label for="promocode">Promocode:</label><br>
-        <input type="text" id="promocode" name="promocode"><br><br>
+        <label for="codigo_postal_negocio">Código Postal del Negocio:</label><br>
+        <input type="text" id="codigo_postal_negocio" name="codigo_postal_negocio"><br><br>
 
-        <label for="anios_negocio">Años con el negocio:</label><br>
-        <input type="number" id="anios_negocio" name="anios_negocio"><br><br>
+        <label for="domicilio_negocio">Domicilio del Negocio:</label><br>
+        <input type="text" id="domicilio_negocio" name="domicilio_negocio"><br><br>
 
-        <label for="ingresos_anuales">Ingresos al año:</label><br>
-        <input type="number" id="ingresos_anuales" name="ingresos_anuales"><br><br>
+        <label for="colonia_negocio">Colonia del Negocio:</label><br>
+        <input type="text" id="colonia_negocio" name="colonia_negocio"><br><br>
 
-        <label for="recurso">En qué utilizará el recurso:</label><br>
-        <input type="text" id="recurso" name="recurso"><br><br>
+        <label for="ciudad_negocio">Ciudad del Negocio:</label><br>
+        <input type="text" id="ciudad_negocio" name="ciudad_negocio"><br><br>
 
-        <label for="actividad_negocio">Actividad del negocio:</label><br>
-        <input type="text" id="actividad_negocio" name="actividad_negocio"><br><br>
+        <label for="municipio_negocio">Municipio del Negocio:</label><br>
+        <input type="text" id="municipio_negocio" name="municipio_negocio"><br><br>
 
-        <!-- Firma Electrónica Avanzada (solo si aplica) -->
-        <h3>Firma Electrónica Avanzada</h3>
-        <p>Este campo solo es necesario para solicitantes con firma electrónica avanzada.</p>
-        <label for="firma_electronica">Firma Electrónica Avanzada:</label><br>
-        <input type="text" id="firma_electronica" name="firma_electronica" style="display:none;"><br><br>
+        <label for="estado_negocio">Estado del Negocio:</label><br>
+        <input type="text" id="estado_negocio" name="estado_negocio"><br><br>
 
-        <!-- Datos para Persona Moral (si aplica) -->
-        <h3>Datos para Persona Moral (si aplica)</h3>
-        <label for="representante_legal">Nombre del Representante Legal:</label><br>
-        <input type="text" id="representante_legal" name="representante_legal" style="display:none;"><br><br>
+        <label for="tiempo_negocio">Tiempo en el Domicilio del Negocio:</label><br>
+        <input type="text" id="tiempo_negocio" name="tiempo_negocio"><br><br>
 
-        <!-- Firma de la Autorización -->
-        <h3>Firma de la Autorización</h3>
+        <label for="telefono_negocio">Teléfono del Negocio:</label><br>
+        <input type="text" id="telefono_negocio" name="telefono_negocio"><br><br>
 
-        <label for="lugar_fecha">Lugar y Fecha en que se firma la autorización:</label><br>
-        <input type="text" id="lugar_fecha" name="lugar_fecha" required><br><br>
+        <label for="anos_funcionamiento">Años de Funcionamiento:</label><br>
+        <input type="text" id="anos_funcionamiento" name="anos_funcionamiento"><br><br>
 
-        <label for="funcionario">Nombre del Funcionario que Recaba la Autorización:</label><br>
-        <input type="text" id="funcionario" name="funcionario" required><br><br>
+        <label for="recurso_funcionamiento">Uso del Recurso:</label><br>
+        <input type="text" id="recurso_funcionamiento" name="recurso_funcionamiento"><br><br>
 
-        <label for="firma_solicitante">Nombre y Firma del Solicitante o Representante Legal:</label><br>
-        <input type="text" id="firma_solicitante" name="firma_solicitante" required><br><br>
+        <label for="ingresos_funcionamiento">Ingresos Anuales:</label><br>
+        <input type="text" id="ingresos_funcionamiento" name="ingresos_funcionamiento"><br><br>
 
-        <!-- Uso Exclusivo de la Empresa -->
-        <h3>Uso Exclusivo de la Empresa</h3>
+        <label for="actividad_funcionamiento">Actividad del Negocio:</label><br>
+        <input type="text" id="actividad_funcionamiento" name="actividad_funcionamiento"><br><br>
 
-        <label for="fecha_consulta_bc">Fecha de Consulta al Buró de Crédito (BC):</label><br>
+        <!-- Datos Bancarios -->
+        <h3>Datos Bancarios</h3>
+
+        <label for="banco">Banco:</label><br>
+        <input type="text" id="banco" name="banco"><br><br>
+
+        <label for="clabe_interbancaria">CLABE Interbancaria:</label><br>
+        <input type="text" id="clabe_interbancaria" name="clabe_interbancaria"><br><br>
+
+        <!-- Datos Familiares -->
+        <h3>Datos Familiares</h3>
+
+        <label for="nombre_familiar1">Nombre del Familiar 1:</label><br>
+        <input type="text" id="nombre_familiar1" name="nombre_familiar1"><br><br>
+
+        <label for="parentesco_familiar1">Parentesco del Familiar 1:</label><br>
+        <input type="text" id="parentesco_familiar1" name="parentesco_familiar1"><br><br>
+
+        <label for="telefono_familiar1">Teléfono del Familiar 1:</label><br>
+        <input type="text" id="telefono_familiar1" name="telefono_familiar1"><br><br>
+
+        <label for="nombre_familiar2">Nombre del Familiar 2:</label><br>
+        <input type="text" id="nombre_familiar2" name="nombre_familiar2"><br><br>
+
+        <label for="parentesco_familiar2">Parentesco del Familiar 2:</label><br>
+        <input type="text" id="parentesco_familiar2" name="parentesco_familiar2"><br><br>
+
+        <label for="telefono_familiar2">Teléfono del Familiar 2:</label><br>
+        <input type="text" id="telefono_familiar2" name="telefono_familiar2"><br><br>
+
+        <!-- Datos adicionales (de los otros documentos) -->
+        <h3>Datos Adicionales</h3>
+
+        <label for="folio_consulta_bc">Folio de Consulta del Buró de Crédito:</label><br>
+        <input type="text" id="folio_consulta_bc" name="folio_consulta_bc"><br><br>
+
+        <label for="fecha_consulta_bc">Fecha de Consulta del Buró de Crédito:</label><br>
         <input type="date" id="fecha_consulta_bc" name="fecha_consulta_bc"><br><br>
 
-        <label for="folio_consulta_bc">Folio de Consulta al Buró de Crédito (BC):</label><br>
-        <input type="text" id="folio_consulta_bc" name="folio_consulta_bc"><br><br>
+        <label for="nombre_funcionario">Nombre del Funcionario que Recaba la Autorización:</label><br>
+        <input type="text" id="nombre_funcionario" name="nombre_funcionario"><br><br>
+
+        <label for="firma_solicitante">Firma del Solicitante o Representante Legal:</label><br>
+        <input type="text" id="firma_solicitante" name="firma_solicitante"><br><br>
 
         <input type="submit" value="Generar PDF">
     </form>
@@ -112,177 +179,3 @@
     <script src="index.js"></script>
 </body>
 </html>
-
-<!--
-        <label for="fisica">
-            <input type="radio" id="fisicalegal" name="opcionpersona" value="fisica">
-            Persona Física
-        </label><br>
-        
-        <label for="moral">
-            <input type="radio" id="morallegal" name="opcionpersona" value="moral">
-            Persona Moral 
-        </label><br>
-        
-        <label for="fisiactiviades">
-            <input type="radio" id="fisicaactividades" name="opcionpersona" value="fisiactiviades">
-            Persona Física con Actividades Empresariales
-        </label><br><br>
-
-        <label for="monto">Monto:</label><br>
-        <input type="number" id="monto" name="monto"><br><br>
-
-        <label for="promocode">Promocode:</label><br>
-        <input type="text" id="promocode" name="promocode"><br><br>
-
-        <h1>Nombre representante legal</h1>
-
-        <label for="nombrelegal">Nombre:</label><br>
-        <input type="text" id="nombrelegal" name="nombrelegal"><br><br> 
-
-        <label for="emaillegal">Email:</label><br>
-        <input type="email" id="emaillegal" name="emaillegal"><br><br> 
-
-        <label for="opcion1">
-            <input type="radio" id="fisicalegal" name="opcionpersona" value="opcion1">
-            Persona Física
-        </label><br>
-        
-        <label for="opcion2">
-            <input type="radio" id="morallegal" name="opcionpersona" value="opcion2">
-            Persona Moral 
-        </label><br><br><br>
-
-        <label for="fechalegal">Fecha de Nacimiento:</label><br>
-        <input type="date" id="fechalegal" name="fechalegal"><br><br> 
-
-        <label for="lugarlegal">Lugar de Nacimiento:</label><br>
-        <input type="text" id="lugarlegal" name="lugarlegal"><br><br> 
-
-        <label for="rfclegal">RFC:</label><br>
-        <input type="text" id="rfclegal" name="rfclegal"><br><br>
-
-        <label for="curplegal">CURP:</label><br>
-        <input type="text" id="curplegal" name="curplegal"><br><br>
-
-        <label for="civil">Estado Civil:</label><br>
-        <input type="text" id="civil" name="civil"><br><br>
-
-        <label for="regimen">Regimen de casado:</label><br>
-        <input type="text" id="regimen" name="regimen"><br><br>
-
-        <h1>Domicilio representante legal</h1>
-
-        <label for="cpdomicilio">C.P:</label><br>
-        <input type="number" id="cpdomicilio" name="cpdomicilio"><br><br> 
-
-        <label for="domiciliodomicilio">Domicilio:</label><br>
-        <input type="text" id="domiciliodomicilio" name="domiciliodomicilio"><br><br>
-
-        <label for="coloniadomicilio">Colonia:</label><br>
-        <input type="text" id="coloniadomicilio" name="coloniadomicilio"><br><br>
-
-        <label for="ciudaddomicilio">Ciudad:</label><br>
-        <input type="text" id="ciudaddomicilio" name="ciudaddomicilio"><br><br> 
-
-        <label for="municipiodomicilio">Municipio:</label><br>
-        <input type="text" id="municipiodomicilio" name="municipiodomicilio"><br><br> 
-
-        <label for="estadodomicilio">Estado:</label><br>
-        <input type="text" id="estadodomicilio" name="estadodomicilio"><br><br> 
-
-        <label for="tiempodomicilio">Tiempo en domicilio:</label><br>
-        <input type="text" id="tiempodomicilio" name="tiempodomicilio"><br><br> 
-
-        <label>
-            <input type="radio" id="rentodomicilio" name="tipodomicilio" value="rento">
-            Rento
-        </label><br>
-        <label>
-            <input type="radio" id="propiodomicilio" name="tipodomicilio" value="propio">
-            Propio
-        </label><br><br>
-
-        <label for="telefonodomicilio">Telefono:</label><br>
-        <input type="number" id="telefonodomicilio" name="telefonodomicilio"><br><br> 
-
-        <h1>Datos del negocio operativo</h1>
-
-        <label for="nombrenegocio">Nombre Comercial:</label><br>
-        <input type="text" id="nombrenegocio" name="nombrenegocio"><br><br> 
-
-        <label for="cpnegocio">C.P:</label><br>
-        <input type="number" id="cpnegocio" name="cpnegocio"><br><br> 
-
-        <label for="domicilionegocio">Domicilio:</label><br>
-        <input type="text" id="domicilionegocio" name="domicilionegocio"><br><br> 
-
-        <label for="colonianegocio">Colonia:</label><br>
-        <input type="text" id="colonianegocio" name="colonianegocio"><br><br> 
-
-        <label for="ciudadnegocio">Ciudad:</label><br>
-        <input type="text" id="ciudadnegocio" name="ciudadnegocio"><br><br>
-
-        <label for="municipionegocio">Municipio:</label><br>
-        <input type="text" id="municipionegocio" name="municipionegocio"><br><br> 
-
-        <label for="estadonegocio">Estado:</label><br>
-        <input type="text" id="estadonegocio" name="estadonegocio"><br><br> 
-
-        <label for="tiemponegocio">Tiempo en domicilio:</label><br>
-        <input type="text" id="tiemponegocio" name="tiemponegocio"><br><br> 
-
-        <label>
-            <input type="radio" id="Rentonegocio" name="tiponegocio" value="rento">
-            Rento
-        </label><br>
-        <label>
-            <input type="radio" id="propionegocio" name="tiponegocio" value="propio">
-            Propio
-        </label><br><br>
-
-        <label for="telefononegocio">Telefono:</label><br>
-        <input type="number" id="telefononegocio" name="telefononegocio"><br><br>
-
-        <h1>Funcionamiento del negocio</h1>
-
-        <label for="anosfuncionamiento">Años con el negocio:</label><br>
-        <input type="number" id="anosfuncionamiento" name="anosfuncionamiento"><br><br> 
-
-        <label for="recursofuncionamiento">En qué utilizará el recurso:</label><br>
-        <input type="text" id="recursofuncionamiento" name="recursofuncionamiento"><br><br> 
-
-        <label for="ingresfuncionamiento">Ingresos al año:</label><br>
-        <input type="number" id="ingresfuncionamiento" name="ingresfuncionamiento"><br><br> 
-
-        <label for="actividadfuncionamiento">Actividad del negocio:</label><br>
-        <input type="text" id="actividadfuncionamiento" name="actividadfuncionamiento"><br><br> 
-
-        <h1>Banco</h1>
-
-        <label for="banco">Banco:</label><br>
-        <input type="text" id="banco" name="banco"><br><br>
-
-        <label for="clabeinterbancaria">CLABE Interbancaria:</label><br>
-        <input type="text" id="clabeinterbancaria" name="clabeinterbancaria"><br><br>
-
-        <h1>Referencias (2) Familiares</h1>
-
-        <label for="nombrefamiliar1">Nombre:</label><br>
-        <input type="text" id="nombrefamiliar1" name="nombrefamiliar1"><br><br> 
-
-        <label for="parentescofamiliar1">Parentesco:</label><br>
-        <input type="text" id="parentescofamiliar1" name="parentescofamiliar1"><br><br> 
-
-        <label for="telefonofamiliar1">Teléfono:</label><br>
-        <input type="number" id="telefonofamiliar1" name="telefonofamiliar1"><br><br> 
-
-        <label for="nombrefamiliar2">Nombre:</label><br>
-        <input type="text" id="nombrefamiliar2" name="nombrefamiliar2"><br><br> 
-
-        <label for="parentescofamiliar2">Parentesco:</label><br>
-        <input type="text" id="parentescofamiliar2" name="parentescofamiliar2"><br><br> 
-
-        <label for="telefonofamiliar2">Teléfono:</label><br>
-        <input type="number" id="telefonofamiliar2" name="telefonofamiliar2"><br><br> 
-        -->
