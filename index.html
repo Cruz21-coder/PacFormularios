@@ -24,6 +24,11 @@
             Persona Moral (PM)
         </label><br><br>
 
+
+        <!--  Fecha -->
+        <label for="fechag">Fecha:</label><br>
+        <input type="date" id="fechag" name="fechag"><br><br>
+
         <!-- Datos Generales -->
         <h3>Datos Generales</h3>
 
@@ -33,9 +38,15 @@
         <label for="promocode">Promocode:</label><br>
         <input type="text" id="promocode" name="promocode"><br><br>
 
-        <label for="nombre">Nombre del Solicitante (Persona Física o Razón Social):</label><br>
+        <label for="nombre">Nombre(s):</label><br>
         <input type="text" id="nombre" name="nombre" required><br><br>
-
+        
+        <label for="apellido_paterno">Apellido Paterno:</label><br>
+        <input type="text" id="apellido_paterno" name="apellido_paterno" required><br><br>
+        
+        <label for="apellido_materno">Apellido Materno:</label><br>
+        <input type="text" id="apellido_materno" name="apellido_materno" required><br><br>
+        
         <label for="email">Email:</label><br>
         <input type="email" id="email" name="email"><br><br>
 
@@ -56,6 +67,47 @@
 
         <label for="regimen_matrimonial">Régimen Matrimonial:</label><br>
         <input type="text" id="regimen_matrimonial" name="regimen_matrimonial"><br><br>
+
+
+        <!-- Housol Adicional-->
+
+        <label for="pais_nacimiento">Pais de Nacimiento:</label><br>
+        <input type="text" id="pais_nacimiento" name="pais_nacimiento"><br><br>
+
+        <label for="nacionalidad">Nacionalidad:</label><br>
+        <input type="text" id="nacionalidad" name="nacionalidad"><br><br>
+
+        <label for="identificacion">Tipo de Identificación Oficial:</label><br>
+        <input type="text" id="identificacion" name="identificacion" ><br><br>
+
+        <label for="folio_identificacion">Número de Folio:</label><br>
+        <input type="text" id="folio_identificacion" name="folio_identificacion" required><br><br>
+
+        <label for="numero_exterior">Número Exterior:</label><br>
+        <input type="text" id="numero_exterior" name="numero_exterior" required><br><br>
+
+        <label for="numero_interior">Número Interior:</label><br>
+        <input type="text" id="numero_interior" name="numero_interior"><br><br>
+
+        <label for="celular">Celular:</label><br>
+        <input type="tel" id="celular" name="celular"><br><br>
+
+        <label for="telefono2">Teléfono 2:</label><br>
+        <input type="text" id="telefono2" name="telefono2"><br><br>
+
+        <label for="extension">Extension:</label><br>
+        <input type="text" id="extension" name="extension"><br><br>
+
+
+
+
+
+
+
+
+
+
+
 
         <!-- Domicilio del Solicitante -->
         <h3>Domicilio del Solicitante</h3>
@@ -78,6 +130,10 @@
         <label for="estado">Estado:</label><br>
         <input type="text" id="estado" name="estado" required><br><br>
 
+        <label for="pais">País:</label><br>
+        <input type="text" id="pais" name="pais" required><br><br>
+
+
         <label for="tiempo_domicilio">Tiempo en Domicilio:</label><br>
         <input type="text" id="tiempo_domicilio" name="tiempo_domicilio"><br><br>
 
@@ -86,6 +142,10 @@
 
         <!-- Datos del Negocio -->
         <h3>Datos del Negocio</h3>
+
+        <label for="rfcs">RFC (Sin abreviaturas):</label><br>
+        <input type="text" id="rfcs" name="rfcs"><br><br>
+
 
         <label for="nombre_negocio">Nombre del Negocio:</label><br>
         <input type="text" id="nombre_negocio" name="nombre_negocio"><br><br>
@@ -167,6 +227,21 @@
 
         <label for="representante_moral">Para el caso de Persona Moral, nombre del Representante Legal:</label><br>
         <input type="text" id="representante_moral" name="representante_moral"><br><br>
+
+
+
+        <!-- Datos adicionales (de los otros documentos) -->
+        <label for="fecha_constitucion">Fecha de Constitución:</label><br>
+        <input type="date" id="fecha_constitucion" name="fecha_constitucion" required><br><br>
+
+        <label for="fecha_registro">Fecha de Registro en el Registro Público:</label><br>
+        <input type="date" id="fecha_registro" name="fecha_registro" required><br><br>
+
+        <label for="autoridad_emisora">Autoridad Emisora:</label><br>
+        <input type="text" id="autoridad_emisora" name="autoridad_emisora" required><br><br>
+
+
+
 
         <input type="submit" value="Generar PDF">
     </form>

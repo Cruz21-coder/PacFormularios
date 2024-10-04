@@ -141,15 +141,65 @@ window.onload = function() {
         
         const coordenadasHousolFisica = (pages) => ({
             0: { 
-                nombre: { x: 138, y: 229 },  
-                rfc: { x: 138, y: 250 }
+                fechag: { x: 120, y: 689 },  
+                apellido_paterno: { x: 179, y: 666 },  
+                apellido_materno: { x: 305, y: 666 },  
+                nombre: { x: 410, y: 666 },  
+                fecha_nacimiento:  { x: 90, y: 644},
+                pais_nacimiento: { x: 179, y: 644 },
+                nacionalidad: { x: 305, y: 644},
+                rfc: { x: 411, y: 644},
+                curp:  { x: 120, y: 621 },
+                actividad_funcionamiento:  { x: 300, y: 621 },
+                identificacion:{ x: 120, y: 596 },
+                folio_identificacion: { x: 410, y: 596},
+                domicilio:  { x: 180, y: 569 },
+                numero_exterior: { x: 352, y: 569 },
+                numero_interior: { x: 440, y: 569 },
+                colonia: { x: 90, y: 547 },
+                municipio: { x: 230, y: 547 },
+                estado: { x: 410, y: 547 },
+                ciudad: { x: 90, y: 524 },
+                pais: { x: 230, y: 524 },
+                codigo_postal: { x: 352, y: 524 },
+                telefono: { x: 440, y: 524 },
+                celular: { x: 90, y: 503 },
+                telefono2: { x: 290, y:503 },
+                extension: { x: 440, y: 503 },
+                email: { x: 211, y: 482 }
+
+
             }
         });
 
         const coordenadasHousolMoral = (pages) => ({
             0: { 
-                nombre: { x: 138, y: 229 },  
-                rfc: { x: 138, y: 250 }
+                fechag: { x: 120, y: 689 },  
+                rfcs: { x: 138, y: 250 },
+                fecha_constitucion: { x: 138, y: 250 },
+                pais_nacimiento: { x: 179, y: 644 },
+                rfc: { x: 138, y: 250 },
+                actividad_funcionamiento:  { x: 300, y: 621 },
+                fecha_registro:  { x: 300, y: 621 },
+                domicilio:  { x: 180, y: 569 },
+                numero_exterior: { x: 352, y: 569 },
+                numero_interior: { x: 440, y: 569 },
+                colonia: { x: 90, y: 547 },
+                municipio: { x: 230, y: 547 },
+                estado: { x: 410, y: 547 },
+                ciudad: { x: 90, y: 524 },
+                pais: { x: 230, y: 524 },
+                codigo_postal: { x: 352, y: 524 },
+                celular: { x: 90, y: 503 },
+                telefono: { x: 440, y: 524 },
+                telefono2: { x: 290, y:503 },
+                extension: { x: 440, y: 503 },
+                email: { x: 211, y: 482 },
+                
+
+
+            
+                
             }
         });
 
@@ -218,7 +268,6 @@ window.onload = function() {
 
         if (opcionPersona === 'fisica') {
             await generateAndDownloadPdf('src/aspiria/AspiriaFisica.pdf', 'AspiriaPersonaFisica.pdf', coordenadasAspiriaFisica, data);
-            await generateAndDownloadPdf('src/negocios/NegocioFormato.pdf', 'NegociosCreditoPF.pdf', coordenadasCreditoPF, data);
         } else if (opcionPersona === 'fisica_actividad_empresarial') {
             await generateAndDownloadPdf('src/aspiria/AspiriaCredito.pdf', 'AspiriaCredito.pdf', coordenadasAspiriaCredito, data);
             await generateAndDownloadPdf('src/negocios/NegocioFormato.pdf', 'NegociosCreditoPFAE.pdf', coordenadasCreditoPFAE, data);
