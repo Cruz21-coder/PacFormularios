@@ -9,21 +9,12 @@
     <h2>Solicitud de crédito</h2>
     <form id="miFormulario">
         <!-- Tipo de solicitante -->
-        <label for="fisica">
-            <input type="radio" id="fisica" name="tipo_solicitante" value="fisica">
-            Persona Física
-        </label><br>
-
-        <label for="fisica_actividad_empresarial">
-            <input type="radio" id="fisica_actividad_empresarial" name="tipo_solicitante" value="fisica_actividad_empresarial">
-            Persona Física con Actividad Empresarial (PFAE)
-        </label><br>
-
-        <label for="moral">
-            <input type="radio" id="moral" name="tipo_solicitante" value="moral">
-            Persona Moral (PM)
-        </label><br><br>
-
+        <label for="tipo_solicitante">Tipo de Solicitante</label><br>
+        <select id="tipo_solicitante" name="tipo_solicitante">
+            <option value="fisica">Persona Física</option>
+            <option value="fisica_actividad_empresarial">Persona Física con Actividad Empresarial (PFAE)</option>
+            <option value="moral">Persona Moral (PM)</option>
+        </select><br><br>
 
         <!--  Fecha -->
         <label for="fechag">Fecha:</label><br>
@@ -68,9 +59,6 @@
         <label for="regimen_matrimonial">Régimen Matrimonial:</label><br>
         <input type="text" id="regimen_matrimonial" name="regimen_matrimonial"><br><br>
 
-
-        <!-- Housol Adicional-->
-
         <label for="pais_nacimiento">Pais de Nacimiento:</label><br>
         <input type="text" id="pais_nacimiento" name="pais_nacimiento"><br><br>
 
@@ -98,16 +86,17 @@
         <label for="extension">Extension:</label><br>
         <input type="text" id="extension" name="extension"><br><br>
 
+        <h3>Que tipo de persona es: </h3>
 
+        <label for="opcion1">
+            <input type="radio" id="fisicalegal" name="opcionpersona" value="opcion1">
+            Persona Fisica
+        </label><br>
 
-
-
-
-
-
-
-
-
+        <label for="opcion2">
+            <input type="radio" id="morallegal" name="opcionpersona" value="opcion2">
+            Persona Moral 
+        </label><br> <br>
 
         <!-- Domicilio del Solicitante -->
         <h3>Domicilio del Solicitante</h3>
@@ -140,12 +129,26 @@
         <label for="telefono">Teléfono:</label><br>
         <input type="text" id="telefono" name="telefono"><br><br>
 
+        <h3>El domicilio es: </h3>
+
+        <label>
+            <input type="radio" id="rentodomicilio" name="tipodomicilio" value="rento">
+            Rento
+        </label><br>
+
+        <label>
+            <input type="radio" id="propiodomicilio" name="tipodomicilio" value="propio">
+            Propio
+        </label><br> <br>
+
         <!-- Datos del Negocio -->
         <h3>Datos del Negocio</h3>
 
+        <label for="representante_moral">Nombre del Representante Legal:</label><br>
+        <input type="text" id="representante_moral" name="representante_moral"><br><br>
+
         <label for="rfcs">RFC (Sin abreviaturas):</label><br>
         <input type="text" id="rfcs" name="rfcs"><br><br>
-
 
         <label for="nombre_negocio">Nombre del Negocio:</label><br>
         <input type="text" id="nombre_negocio" name="nombre_negocio"><br><br>
@@ -186,6 +189,18 @@
         <label for="actividad_funcionamiento">Actividad del Negocio:</label><br>
         <input type="text" id="actividad_funcionamiento" name="actividad_funcionamiento"><br><br>
 
+        <h3>El domicilio es: </h3>
+
+        <label>
+            <input type="radio" id="Rentonegocio" name="tiponegocio" value="rento">
+            Rento
+        </label><br>
+
+        <label>
+            <input type="radio" id="propionegocio" name="tiponegocio" value="propio">
+            Propio
+        </label><br><br>
+
         <!-- Datos Bancarios -->
         <h3>Datos Bancarios</h3>
 
@@ -225,23 +240,15 @@
         <label for="fecha_consulta_bc">Fecha de Consulta del Buró de Crédito:</label><br>
         <input type="date" id="fecha_consulta_bc" name="fecha_consulta_bc"><br><br>
 
-        <label for="representante_moral">Para el caso de Persona Moral, nombre del Representante Legal:</label><br>
-        <input type="text" id="representante_moral" name="representante_moral"><br><br>
-
-
-
         <!-- Datos adicionales (de los otros documentos) -->
         <label for="fecha_constitucion">Fecha de Constitución:</label><br>
-        <input type="date" id="fecha_constitucion" name="fecha_constitucion" required><br><br>
+        <input type="date" id="fecha_constitucion" name="fecha_constitucion"><br><br>
 
         <label for="fecha_registro">Fecha de Registro en el Registro Público:</label><br>
-        <input type="date" id="fecha_registro" name="fecha_registro" required><br><br>
+        <input type="date" id="fecha_registro" name="fecha_registro"><br><br>
 
         <label for="autoridad_emisora">Autoridad Emisora:</label><br>
-        <input type="text" id="autoridad_emisora" name="autoridad_emisora" required><br><br>
-
-
-
+        <input type="text" id="autoridad_emisora" name="autoridad_emisora"><br><br>
 
         <input type="submit" value="Generar PDF">
     </form>
