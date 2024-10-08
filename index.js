@@ -226,20 +226,20 @@ window.onload = function() {
 
                     if (fileName === 'AspiriaCredito.pdf' && pageIndex === 0) {
                         if (data.opcionpersona === 'opcion1') {
-                            page.drawText('X', { x: 105, y: height - 184, size: 12 });
+                            page.drawText('X', { x: 105, y: 624, size: 12});
                         } else if (data.opcionpersona === 'opcion2') {
-                            page.drawText('X', { x: 225, y: height - 184, size: 12 });
+                            page.drawText('X', { x: 225, y: 624, size: 12 });
                         }
         
                         if (data.tipodomicilio === 'rento') {
-                            page.drawText('X', { x: 340, y: height - 310, size: 12 });
+                            page.drawText('X', { x: 340, y: 499, size: 12});
                         } else if (data.tipodomicilio === 'propio') {
-                            page.drawText('X', { x: 440, y: height - 310, size: 12 });
+                            page.drawText('X', { x: 440, y: 499, size: 12});
                         }
                         if (data.tiponegocio === 'rento') {
-                            page.drawText('X', { x: 515, y: height - 382, size: 12 });
+                            page.drawText('X', { x: 515, y: 426, size:12});
                         } else if (data.tiponegocio === 'propio') {
-                            page.drawText('X', { x: 95, y: height - 396, size: 12 });
+                            page.drawText('X', { x: 95, y: 412, size: 12});
                         }
                     }
                 });
@@ -444,7 +444,7 @@ window.onload = function() {
             await generateAndDownloadPdf('src/housol/HousolCreditoFisica.pdf', 'HousolCreditoFisica.pdf', coordenadasCreditoHousolFisica, data);
         } else if (opcionPersona === 'fisica_actividad_empresarial') {
             await generateAndDownloadPdf('src/aspiria/AspiriaCredito.pdf', 'AspiriaCredito.pdf', coordenadasAspiriaCredito, data);
-            //await generateAndDownloadPdf('src/negocios/NegocioFormato.pdf', 'NegociosCreditoPFAE.pdf', coordenadasCreditoPFAE, data);
+            await generateAndDownloadPdf('src/negocios/NegocioFormato.pdf', 'NegociosCreditoPFAE.pdf', coordenadasCreditoPFAE, data);
         } else if (opcionPersona === 'moral') {
             await generateAndDownloadPdf('src/negocios/NegocioFormato.pdf', 'NegociosCreditoPM.pdf', coordenadasCreditoPM, data);
             await generateAndDownloadPdf('src/housol/HousolMoral.pdf', 'HousolMoral.pdf', coordenadasHousolMoral, data);
