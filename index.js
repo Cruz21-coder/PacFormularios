@@ -142,7 +142,29 @@ window.onload = function() {
             data[key] = value;
         });
 
-        const generateAndDownloadPdf = async (pdfFile, fileName, coordenadasCallback, data) => {
+        if (fileName === 'AspiriaSolicitudCredito.pdf') {
+            console.log("Aplicando condicionales específicas para AspiriaSolicitudCredito");
+        
+            if (data.opcionpersona === 'opcion1') {
+                firstPage.drawText('X', { x: 105, y: height - 184, size: fontSize });
+            } else if (data.opcionpersona === 'opcion2') {
+                firstPage.drawText('X', { x: 225, y: height - 184, size: fontSize });
+            }
+        
+            if (data.tipodomicilio === 'rento') {
+                firstPage.drawText('X', { x: 340, y: height - 310, size: fontSize });
+            } else if (data.tipodomicilio === 'propio') {
+                firstPage.drawText('X', { x: 440, y: height - 310, size: fontSize });
+            }
+        
+            if (data.tiponegocio === 'rento') {
+                firstPage.drawText('X', { x: 515, y: height - 382, size: fontSize });
+            } else if (data.tiponegocio === 'propio') {
+                firstPage.drawText('X', { x: 95, y: height - 396, size: fontSize });
+            }
+        }
+
+        const generateAndDownloadPdf = async (pdfFile, fileName, coordenadasCallback, data, xCoord) => {
             try {
                 const existingPdfBytes = await fetch(pdfFile).then(res => res.arrayBuffer());
                 const pdfDoc = await PDFLib.PDFDocument.load(existingPdfBytes);
@@ -318,6 +340,11 @@ window.onload = function() {
                 telefono2: { x: 290, y:503 },
                 extension: { x: 440, y: 503 },
                 email: { x: 211, y: 482 },
+                
+
+
+            
+                
             }
         });
 
@@ -395,9 +422,9 @@ window.onload = function() {
             await generateAndDownloadPdf('src/aspiria/AspiriaCredito.pdf', 'AspiriaCredito.pdf', coordenadasAspiriaCredito, data);
             await generateAndDownloadPdf('src/negocios/NegocioFormato.pdf', 'NegociosCreditoPFAE.pdf', coordenadasCreditoPFAE, data);
         } else if (opcionPersona === 'moral') {
-            await generateAndDownloadPdf('src/negocios/NegocioFormato.pdf', 'NegociosCreditoPM.pdf', coordenadasCreditoPM, data);
+           // await generateAndDownloadPdf('src/negocios/NegocioFormato.pdf', 'NegociosCreditoPM.pdf', coordenadasCreditoPM, data);
             await generateAndDownloadPdf('src/housol/HousolMoral.pdf', 'HousolMoral.pdf', coordenadasHousolMoral, data);
-            await generateAndDownloadPdf('src/housol/HousolCreditoMoral.pdf', 'HousolCreditoMoral.pdf', coordenadasCreditoHousolmoral, data);
+            //await generateAndDownloadPdf('src/housol/HousolCreditoMoral.pdf', 'HousolCreditoMoral.pdf', coordenadasCreditoHousolmoral, data);
         }
     });
 };
