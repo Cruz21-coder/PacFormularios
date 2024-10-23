@@ -1,188 +1,137 @@
 window.onload = function() {
     const form = document.getElementById('miFormulario');
-
-    /*document.getElementById('tipo_solicitante').addEventListener('change', function() {
-        if (this.value === 'fisica') {
-            // Persona Física
-            document.getElementById('nombre').style.display = 'block';
-            document.getElementById('rfc').style.display = 'block';
-            document.getElementById('domicilio').style.display = 'block';
-            document.getElementById('colonia').style.display = 'block';
-            document.getElementById('municipio').style.display = 'block';
-            document.getElementById('estado').style.display = 'block';
-            document.getElementById('codigo_postal').style.display = 'block';
-            document.getElementById('telefono').style.display = 'block';
-            document.getElementById('apellido_paterno').style.display = 'block';
-            document.getElementById('apellido_materno').style.display = 'block';
-            document.getElementById('fecha_nacimiento').style.display = 'block';
-            document.getElementById('pais_nacimiento').style.display = 'block';
-            document.getElementById('nacionalidad').style.display = 'block';
-            document.getElementById('curp').style.display = 'block';
-            document.getElementById('actividad_funcionamiento').style.display = 'block';
-            document.getElementById('identificacion').style.display = 'block';
-            document.getElementById('folio_identificacion').style.display = 'block';
-            document.getElementById('numero_exterior').style.display = 'block';
-            document.getElementById('numero_interior').style.display = 'block';
-            document.getElementById('ciudad').style.display = 'block';
-            document.getElementById('pais').style.display = 'block';
-            document.getElementById('celular').style.display = 'block';
-            document.getElementById('telefono2').style.display = 'block';
-            document.getElementById('extension').style.display = 'block';
-            document.getElementById('email').style.display = 'block';
-
-            // Ocultar No relacionados
-            document.getElementById('promocode').style.display = 'none';
-            document.getElementById('nombre_negocio').style.display = 'none';
-            document.getElementById('codigo_postal_negocio').style.display = 'none';
-            document.getElementById('domicilio_negocio').style.display = 'none';
-            document.getElementById('colonia_negocio').style.display = 'none';
-            document.getElementById('ciudad_negocio').style.display = 'none';
-            document.getElementById('municipio_negocio').style.display = 'none';
-            document.getElementById('estado_negocio').style.display = 'none';
-            document.getElementById('tiempo_negocio').style.display = 'none';
-            document.getElementById('telefono_negocio').style.display = 'none';
-            document.getElementById('anos_funcionamiento').style.display = 'none';
-            document.getElementById('recurso_funcionamiento').style.display = 'none';
-            document.getElementById('ingresos_funcionamiento').style.display = 'none';
-            document.getElementById('actividad_funcionamiento').style.display = 'none';
-            document.getElementById('banco').style.display = 'none';
-            document.getElementById('clabe_interbancaria').style.display = 'none';
-            document.getElementById('nombre_familiar1').style.display = 'none';
-            document.getElementById('parentesco_familiar1').style.display = 'none';
-            document.getElementById('telefono_familiar1').style.display = 'none';
-            document.getElementById('nombre_familiar2').style.display = 'none';
-            document.getElementById('parentesco_familiar2').style.display = 'none';
-            document.getElementById('telefono_familiar2').style.display = 'none';
-            document.getElementById('representante_moral').style.display = 'none';
-            document.getElementById('rfcs').style.display = 'none';
-            document.getElementById('fecha_constitucion').style.display = 'none';
-            document.getElementById('fecha_registro').style.display = 'none';
-            document.getElementById('autoridad_emisora').style.display = 'none';
+    const tipoSolicitante = document.getElementById('tipo_solicitante');
+    
+    function actualizarFormulario() {
+        const seleccion = tipoSolicitante.value;
         
-            
-        } else if (this.value === 'moral') {
-            // Persona Moral
-            document.getElementById('representante_moral').style.display = 'block';
-            document.getElementById('rfcs').style.display = 'block';
-            document.getElementById('fecha_constitucion').style.display = 'block';
-            document.getElementById('fecha_registro').style.display = 'block';
-            document.getElementById('autoridad_emisora').style.display = 'block';
-        
-            // Ocultar No relacionados
-            document.getElementById('nombre').style.display = 'none';
-            document.getElementById('apellido_paterno').style.display = 'none';
-            document.getElementById('apellido_materno').style.display = 'none';
-            document.getElementById('rfc').style.display = 'none';
-            document.getElementById('domicilio').style.display = 'none';
-            document.getElementById('colonia').style.display = 'none';
-            document.getElementById('municipio').style.display = 'none';
-            document.getElementById('estado').style.display = 'none';
-            document.getElementById('codigo_postal').style.display = 'none';
-            document.getElementById('telefono').style.display = 'none';
-            document.getElementById('monto').style.display = 'none';
-            document.getElementById('promocode').style.display = 'none';
-            document.getElementById('email').style.display = 'none';
-            document.getElementById('fecha_nacimiento').style.display = 'none';
-            document.getElementById('lugar_nacimiento').style.display = 'none';
-            document.getElementById('curp').style.display = 'none';
-            document.getElementById('estado_civil').style.display = 'none';
-            document.getElementById('regimen_matrimonial').style.display = 'none';
-            document.getElementById('tiempo_domicilio').style.display = 'none';
-            document.getElementById('pais_nacimiento').style.display = 'none';
-            document.getElementById('nacionalidad').style.display = 'none';
-            document.getElementById('identificacion').style.display = 'none';
-            document.getElementById('folio_identificacion').style.display = 'none';
-            document.getElementById('numero_exterior').style.display = 'none';
-            document.getElementById('numero_interior').style.display = 'none';
-            document.getElementById('celular').style.display = 'none';
-            document.getElementById('telefono2').style.display = 'none';
-            document.getElementById('extension').style.display = 'none';
-            document.getElementById('pais').style.display = 'none';
-            document.getElementById('nombre_negocio').style.display = 'none';
-            document.getElementById('codigo_postal_negocio').style.display = 'none';
-            document.getElementById('domicilio_negocio').style.display = 'none';
-            document.getElementById('colonia_negocio').style.display = 'none';
-            document.getElementById('ciudad_negocio').style.display = 'none';
-            document.getElementById('municipio_negocio').style.display = 'none';
-            document.getElementById('estado_negocio').style.display = 'none';
-            document.getElementById('tiempo_negocio').style.display = 'none';
-            document.getElementById('telefono_negocio').style.display = 'none';
-            document.getElementById('anos_funcionamiento').style.display = 'none';
-            document.getElementById('recurso_funcionamiento').style.display = 'none';
-            document.getElementById('ingresos_funcionamiento').style.display = 'none';
-            document.getElementById('actividad_funcionamiento').style.display = 'none';
-            document.getElementById('banco').style.display = 'none';
-            document.getElementById('clabe_interbancaria').style.display = 'none';
-            document.getElementById('nombre_familiar1').style.display = 'none';
-            document.getElementById('parentesco_familiar1').style.display = 'none';
-            document.getElementById('telefono_familiar1').style.display = 'none';
-            document.getElementById('nombre_familiar2').style.display = 'none';
-            document.getElementById('parentesco_familiar2').style.display = 'none';
-            document.getElementById('telefono_familiar2').style.display = 'none';
+        ocultarCampos();
+        mostrarHeaders();
 
-        } else if(this.value === 'fisica_actividad_empresarial'){
-            //Persona fisica con actividades
-            document.getElementById('nombre').style.display = 'block';
-            document.getElementById('rfc').style.display = 'block';
-            document.getElementById('domicilio').style.display = 'block';
-            document.getElementById('colonia').style.display = 'block';
-            document.getElementById('municipio').style.display = 'block';
-            document.getElementById('estado').style.display = 'block';
-            document.getElementById('codigo_postal').style.display = 'block';
-            document.getElementById('telefono').style.display = 'block';
-            document.getElementById('monto').style.display = 'block';
-            document.getElementById('promocode').style.display = 'block';
-            document.getElementById('email').style.display = 'block';
-            document.getElementById('fecha_nacimiento').style.display = 'block';
-            document.getElementById('lugar_nacimiento').style.display = 'block';
-            document.getElementById('curp').style.display = 'block';
-            document.getElementById('estado_civil').style.display = 'block';
-            document.getElementById('regimen_matrimonial').style.display = 'block';
-            document.getElementById('tiempo_domicilio').style.display = 'block';
-            document.getElementById('nombre_negocio').style.display = 'block';
-            document.getElementById('codigo_postal_negocio').style.display = 'block';
-            document.getElementById('domicilio_negocio').style.display = 'block';
-            document.getElementById('colonia_negocio').style.display = 'block';
-            document.getElementById('ciudad_negocio').style.display = 'block';
-            document.getElementById('municipio_negocio').style.display = 'block';
-            document.getElementById('estado_negocio').style.display = 'block';
-            document.getElementById('tiempo_negocio').style.display = 'block';
-            document.getElementById('telefono_negocio').style.display = 'block';
-            document.getElementById('anos_funcionamiento').style.display = 'block';
-            document.getElementById('recurso_funcionamiento').style.display = 'block';
-            document.getElementById('ingresos_funcionamiento').style.display = 'block';
-            document.getElementById('actividad_funcionamiento').style.display = 'block';
-            document.getElementById('banco').style.display = 'block';
-            document.getElementById('clabe_interbancaria').style.display = 'block';
-            document.getElementById('nombre_familiar1').style.display = 'block';
-            document.getElementById('parentesco_familiar1').style.display = 'block';
-            document.getElementById('telefono_familiar1').style.display = 'block';
-            document.getElementById('nombre_familiar2').style.display = 'block';
-            document.getElementById('parentesco_familiar2').style.display = 'block';
-            document.getElementById('telefono_familiar2').style.display = 'block';
-
-            // Ocultar campos no relacionados con PFAE
-            document.getElementById('apellido_paterno').style.display = 'none';
-            document.getElementById('apellido_materno').style.display = 'none';
-            document.getElementById('pais_nacimiento').style.display = 'none';
-            document.getElementById('nacionalidad').style.display = 'none';
-            document.getElementById('identificacion').style.display = 'none';
-            document.getElementById('folio_identificacion').style.display = 'none';
-            document.getElementById('numero_exterior').style.display = 'none';
-            document.getElementById('numero_interior').style.display = 'none';
-            document.getElementById('celular').style.display = 'none';
-            document.getElementById('telefono2').style.display = 'none';
-            document.getElementById('extension').style.display = 'none';
-            document.getElementById('pais').style.display = 'none';
-            document.getElementById('representante_moral').style.display = 'none';
-            document.getElementById('rfcs').style.display = 'none';
-            document.getElementById('folio_consulta_bc').style.display = 'none';
-            document.getElementById('fecha_consulta_bc').style.display = 'none';
-            document.getElementById('fecha_constitucion').style.display = 'none';
-            document.getElementById('fecha_registro').style.display = 'none';
-            document.getElementById('autoridad_emisora').style.display = 'none';
+        if (seleccion === 'fisica') {
+            mostrarCamposFisica();
+        } else if (seleccion === 'moral') {
+            mostrarCamposMoral();
+        } else if (seleccion === 'fisica_actividad_empresarial') {
+            mostrarCamposPFAE();
         }
-    });*/
+    }
+
+    function ocultarCampos() {
+        const campos = document.querySelectorAll('input, select, textarea, label'); 
+        campos.forEach(campo => {
+            if (campo.id !== 'tipo_solicitante' && campo.id !== 'label_tipo_solicitante') { 
+                campo.style.display = 'none';
+            }
+        });
+    }
+
+    function mostrarHeaders() {
+        const headers = document.querySelectorAll('h3');
+        headers.forEach(header => {
+            header.style.display = 'block';
+        });
+    }
+
+    function mostrarCamposFisica() {
+        mostrarElemento('fechag');
+        mostrarElemento('apellido_paterno');
+        mostrarElemento('apellido_materno');
+        mostrarElemento('nombre');
+        mostrarElemento('fecha_nacimiento');
+        mostrarElemento('pais_nacimiento');
+        mostrarElemento('nacionalidad');
+        mostrarElemento('rfc');
+        mostrarElemento('curp');
+        mostrarElemento('actividad_funcionamiento');
+        mostrarElemento('identificacion');
+        mostrarElemento('folio_identificacion');
+        mostrarElemento('domicilio');
+        mostrarElemento('numero_exterior');
+        mostrarElemento('numero_interior');
+        mostrarElemento('colonia');
+        mostrarElemento('municipio');
+        mostrarElemento('estado');
+        mostrarElemento('ciudad');
+        mostrarElemento('pais');
+        mostrarElemento('codigo_postal');
+        mostrarElemento('telefono');
+        mostrarElemento('celular');
+        mostrarElemento('telefono2');
+        mostrarElemento('extension');
+        mostrarElemento('email');
+        mostrarElemento('TPersona');
+        mostrarElemento('submitButton');
+        document.getElementById('submitButton').disabled = false;
+    }
+
+    function mostrarCamposMoral() {
+        mostrarElemento('representante_moral');
+        mostrarElemento('rfcs');
+        mostrarElemento('domicilio_negocio');
+        mostrarElemento('colonia_negocio');
+        mostrarElemento('municipio_negocio');
+        mostrarElemento('estado_negocio');
+        mostrarElemento('codigo_postal_negocio');
+        mostrarElemento('telefono_negocio');
+        mostrarElemento('submitButton');
+        document.getElementById('submitButton').disabled = false;
+    }
+
+    function mostrarCamposPFAE() {
+        mostrarElemento('monto');
+        mostrarElemento('promocode');
+        mostrarElemento('nombre');
+        mostrarElemento('email');
+        mostrarElemento('fecha_nacimiento');
+        mostrarElemento('lugar_nacimiento');
+        mostrarElemento('rfc');
+        mostrarElemento('curp');
+        mostrarElemento('estado_civil');
+        mostrarElemento('regimen_matrimonial');
+        mostrarElemento('codigo_postal');
+        mostrarElemento('domicilio');
+        mostrarElemento('colonia');
+        mostrarElemento('ciudad');
+        mostrarElemento('municipio');
+        mostrarElemento('estado');
+        mostrarElemento('tiempo_domicilio');
+        mostrarElemento('telefono');
+        mostrarElemento('nombre_negocio');
+        mostrarElemento('codigo_postal_negocio');
+        mostrarElemento('domicilio_negocio');
+        mostrarElemento('colonia_negocio');
+        mostrarElemento('ciudad_negocio');
+        mostrarElemento('municipio_negocio');
+        mostrarElemento('estado_negocio');
+        mostrarElemento('tiempo_negocio');
+        mostrarElemento('telefono_negocio');
+        mostrarElemento('anos_funcionamiento');
+        mostrarElemento('recurso_funcionamiento');
+        mostrarElemento('ingresos_funcionamiento');
+        mostrarElemento('actividad_funcionamiento');
+        mostrarElemento('banco');
+        mostrarElemento('clabe_interbancaria');
+        mostrarElemento('nombre_familiar1');
+        mostrarElemento('parentesco_familiar1');
+        mostrarElemento('telefono_familiar1');
+        mostrarElemento('nombre_familiar2');
+        mostrarElemento('parentesco_familiar2');
+        mostrarElemento('telefono_familiar2');
+        document.getElementById('submitButton').disabled = false;
+    }
+
+    function mostrarElemento(id) {
+        const campo = document.getElementById(id);
+        const label = document.querySelector(`label[for="${id}"]`);
+        
+        if (campo) campo.style.display = 'block';
+        if (label) label.style.display = 'block';
+    }
+
+    tipoSolicitante.addEventListener('change', actualizarFormulario);
+
+    actualizarFormulario();
 
     form.addEventListener('submit', async function(event) {
         event.preventDefault();
