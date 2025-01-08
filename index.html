@@ -38,8 +38,8 @@
             </select><br>
 
             <div id="desde_cuando_container" style="display: none;">
-                <label for="desde_cuando">Desde cuándo:</label><br>
-                <input type="date" id="desde_cuando" name="desde_cuando">
+                <label for="desde_cuando_fisica">Desde cuándo:</label><br>
+                <input type="date" id="desde_cuando_fisica" name="desde_cuando_fisica">
             </div>
 
             <label for="nombre_fisica">Nombre(s):</label><br>
@@ -101,13 +101,13 @@
             </select><br>
 
             <!-- Contenedor para Régimen Matrimonial -->
-            <div id="regimen_matrimonial_container" style="display: none;">
+            <div id="regimen_matrimonial_container_fisica" style="display: none;">
                 <label for="regimen_matrimonial_fisica">Régimen Matrimonial:</label><br>
                 <input type="text" id="regimen_matrimonial_fisica" name="regimen_matrimonial_fisica"><br>
             </div>
 
             <!-- Contenedor para Pensión Alimenticia -->
-            <div id="pension_container" style="display: none;">
+            <div id="pension_container_fisica" style="display: none;">
                 <label for="pension_fisica">Si paga pensión alimenticia, anote el importe mensual:</label><br>
                 <input type="text" id="pension_fisica" name="pension_fisica"><br>
             </div>
@@ -162,6 +162,7 @@
             <div id="hipoteca_option" style="display: none;">
                 <label for="con_hipoteca">¿Con Hipoteca?</label><br>
                 <select id="con_hipoteca" name="con_hipoteca">
+                    <option value="">Seleccione</option>
                     <option value="si">Sí</option>
                     <option value="no">No</option>
                 </select><br>
@@ -230,11 +231,20 @@
             <label for="fecha_ingreso_empresa_fisica">Fecha de Ingreso a la Empresa:</label><br>
             <input type="date" id="fecha_ingreso_empresa_fisica" name="fecha_ingreso_empresa_fisica"><br>
 
-            <label for="antiguedad_empresa_fisica">Antigüedad en la Empresa:</label><br>
+            <label for="antiguedad_empresa_fisica">Antigüedad en la Empresa (Años):</label><br>
             <input type="text" id="antiguedad_empresa_fisica" name="antiguedad_empresa_fisica"><br>
 
             <label for="telefono_empresa_fisica">Teléfono de la Empresa:</label><br>
             <input type="tel" id="telefono_empresa_fisica" name="telefono_empresa_fisica"><br>
+
+            <label for="sector_laboral_fisica">Sector Laboral:</label><br>
+            <select id="sector_laboral_fisica" name="sector_laboral_fisica">
+                <option value="">Seleccione</option>
+                <option value="Privado">Privado</option>
+                <option value="PublicoF">Público Federal</option>
+                <option value="PublicoE">Público Estatal</option>
+                <option value="PublicoM">Público Municipal</option>
+            </select><br>
 
             <label for="actividades_empresa_fisica">Actividades en la Empresa:</label><br>
             <textarea id="actividades_empresa_fisica" name="actividades_empresa_fisica"></textarea><br>
@@ -253,21 +263,15 @@
 
             <label for="extension_fisica">Extensión:</label><br>
             <input type="text" id="extension_fisica" name="extension_fisica"><br>
-
-            <label for="ingresos_mensuales_fisica">Ingresos Mensuales:</label><br>
-            <input type="text" id="ingresos_mensuales_fisica" name="ingresos_mensuales_fisica"><br>
-
-            <label for="obligaciones_fisica">Obligaciones Financieras:</label><br>
-            <textarea id="obligaciones_fisica" name="obligaciones_fisica"></textarea><br>
-
-            <label for="patrimonio_fisica">Patrimonio:</label><br>
-            <textarea id="patrimonio_fisica" name="patrimonio_fisica"></textarea><br>
             
         </fieldset>
         
         <!-- Persona Física con Actividad Empresarial -->
         <fieldset id="fisica_actividad_empresarial" class="tipo-solicitante">
             <legend>Persona Física con Actividad Empresarial</legend>
+
+            <label for="fechag_fae">Fecha:</label><br>
+            <input type="date" id="fechag_fae" name="fechag_fae"><br><br>
             
             <label for="monto_fae">Monto solictado:</label><br>
             <input type="number" id="monto_fae" name="monto_fae"><br>
@@ -278,9 +282,9 @@
             <!-- Datos del Representante legal -->
             <h3>Datos del Representante legal</h3>
 
-            
             <label for="persona_fae">Es Persona:</label><br>
             <select id="persona_fae" name="persona_fae">
+                <option value="">Seleccione</option>
                 <option value="fisica">Fisica</option>
                 <option value="moral">Moral</option>
             </select><br>
@@ -304,13 +308,25 @@
             <input type="email" id="email_fae" name="email_fae"><br>
 
             <label for="estado_civil_fae">Estado Civil:</label><br>
-            <input type="text" id="estado_civil_fae" name="estado_civil_fae"><br>
+            <select id="estado_civil_fae" name="estado_civil_fae" onchange="toggleRegimenMatrimonial()">
+                <option value="">Seleccione</option>
+                <option value="Soltero">Soltero</option>
+                <option value="Unión Libre">Unión Libre</option>
+                <option value="Casado">Casado</option>
+                <option value="Divorciado">Divorciado</option>
+            </select><br>
 
-            <label for="regimen_matrimonial_fae">Régimen Matrimonial:</label><br>
-            <input type="text" id="regimen_matrimonial_fae" name="regimen_matrimonial_fae"><br>
+            <!-- Contenedor para Régimen Matrimonial -->
+            <div id="regimen_matrimonial_container_fae" style="display: none;">
+                <label for="regimen_matrimonial_fae">Régimen Matrimonial:</label><br>
+                <input type="text" id="regimen_matrimonial_fae" name="regimen_matrimonial_fae"><br>
+            </div>
 
             <label for="domicilio_fae">Domicilio:</label><br>
             <input type="text" id="domicilio_fae" name="domicilio_fae"><br>
+
+            <label for="numero_exterior_fae">Numero Exterior:</label><br>
+            <input type="text" id="numero_exterior_fae" name="numero_exterior_fae"><br>
 
             <label for="colonia_fae">Colonia:</label><br>
             <input type="text" id="colonia_fae" name="colonia_fae"><br>
@@ -332,6 +348,7 @@
 
             <label for="tipodomicilio_fae">El Domicilio es:</label><br>
             <select id="tipodomicilio_fae" name="tipodomicilio_fae">
+                <option value="">Seleccione</option>
                 <option value="rento">Rentado</option>
                 <option value="propio">Propio</option>
             </select><br>
@@ -345,11 +362,11 @@
             <label for="nombre_negocio_fae">Nombre del Negocio:</label><br>
             <input type="text" id="nombre_negocio_fae" name="nombre_negocio_fae"><br>
 
-            <label for="codigo_postal_negocio_fae">Código Postal del Negocio:</label><br>
-            <input type="text" id="codigo_postal_negocio_fae" name="codigo_postal_negocio_fae"><br>
-
             <label for="domicilio_negocio_fae">Domicilio del Negocio:</label><br>
             <input type="text" id="domicilio_negocio_fae" name="domicilio_negocio_fae"><br>
+
+            <label for="numero_exterior_negocio_fae">Numero exterior del Negocio:</label><br>
+            <input type="text" id="numero_exterior_negocio_fae" name="numero_exterior_negocio_fae"><br>
 
             <label for="colonia_negocio_fae">Colonia del Negocio:</label><br>
             <input type="text" id="colonia_negocio_fae" name="colonia_negocio_fae"><br>
@@ -360,14 +377,18 @@
             <label for="municipio_negocio_fae">Municipio del Negocio:</label><br>
             <input type="text" id="municipio_negocio_fae" name="municipio_negocio_fae"><br>
 
-            <label for="telefono_negocio_fae">Teléfono del Negocio:</label><br>
-            <input type="text" id="telefono_negocio_fae" name="telefono_negocio_fae"><br>
-
             <label for="estado_negocio_fae">Estado del Negocio:</label><br>
             <input type="text" id="estado_negocio_fae" name="estado_negocio_fae"><br>
 
+            <label for="codigo_postal_negocio_fae">Código Postal del Negocio:</label><br>
+            <input type="text" id="codigo_postal_negocio_fae" name="codigo_postal_negocio_fae"><br>
+
+            <label for="telefono_negocio_fae">Teléfono del Negocio:</label><br>
+            <input type="text" id="telefono_negocio_fae" name="telefono_negocio_fae"><br>
+
             <label for="tiponegocio_fae">El Domicilio es:</label><br>
             <select id="tiponegocio_fae" name="tiponegocio_fae">
+                <option value="">Seleccione</option>
                 <option value="rento">Rentado</option>
                 <option value="propio">Propio</option>
             </select><br>

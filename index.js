@@ -10,8 +10,19 @@ function mostrarCampos() {
     }
 }
 
+function obtenerDomicilioCompleto(data, tipo, incluirNumeroExterior = false) {
+    const domicilio = data[`domicilio_${tipo}`] || '';
+    const numeroExterior = data[`numero_exterior_${tipo}`] || '';
+
+    if (incluirNumeroExterior && numeroExterior) {
+        return `${domicilio} No. ${numeroExterior}`;
+    }
+    return domicilio;
+}
+
 function setFechaActual() {
     const fechaCampoFisica = document.getElementById('fechag_fisica');
+    const fechaCampoFae = document.getElementById('fechag_fae');
     const fechaCampoMoral = document.getElementById('fechag_moral');
 
     const hoy = new Date();
@@ -21,34 +32,55 @@ function setFechaActual() {
     const day = String(hoy.getDate()).padStart(2, '0');
 
     fechaCampoFisica.value = `${year}-${month}-${day}`;
+    fechaCampoFae.value = `${year}-${month}-${day}`;
     fechaCampoMoral.value = `${year}-${month}-${day}`;
 }
 
 function toggleDesdeCuando() {
     const clienteHousol = document.getElementById('cliente_housol_fisica').value;
     const desdeCuandoContainer = document.getElementById('desde_cuando_container');
+    const desdeCuandoField = document.getElementById('desde_cuando_fisica');
 
     if (clienteHousol === 'si') {
         desdeCuandoContainer.style.display = 'block'; 
     } else {
         desdeCuandoContainer.style.display = 'none'; 
+        desdeCuandoField.value = '';
     }
 }
 
 function toggleRegimenMatrimonial() {
-    const estadoCivil = document.getElementById('estado_civil_fisica').value;
-    const regimenContainer = document.getElementById('regimen_matrimonial_container');
-    const pensionContainer = document.getElementById('pension_container');
+    const estadoCivil_fisica = document.getElementById('estado_civil_fisica').value;
+    const regimenContainer_fisica = document.getElementById('regimen_matrimonial_container_fisica');
+    const pensionContainer_fisica = document.getElementById('pension_container_fisica');
+    const regimenField= document.getElementById('regimen_matrimonial_fisica');
+    const pensionField = document.getElementById('pension_fisica');
 
-    if (estadoCivil === 'Casado') {
-        regimenContainer.style.display = 'block';
-        pensionContainer.style.display = 'none';
-    } else if (estadoCivil === 'Divorciado') {
-        pensionContainer.style.display = 'block';
-        regimenContainer.style.display = 'none';
+    if (estadoCivil_fisica === 'Casado') {
+        regimenContainer_fisica.style.display = 'block';
+        pensionContainer_fisica.style.display = 'none';
+        pensionField.value = '';
+    } else if (estadoCivil_fisica === 'Divorciado') {
+        pensionContainer_fisica.style.display = 'block';
+        regimenContainer_fisica.style.display = 'none';
+        regimenField.value = '';
     } else {
-        regimenContainer.style.display = 'none';
-        pensionContainer.style.display = 'none';
+        regimenContainer_fisica.style.display = 'none';
+        pensionContainer_fisica.style.display = 'none';
+        pensionField.value = '';
+        regimenField.value = '';
+    }
+
+    const estadoCivil_fae = document.getElementById('estado_civil_fae').value;
+    const regimenContainer_fae = document.getElementById('regimen_matrimonial_container_fae');
+    const RegimenField = document.getElementById('regimen_matrimonial_fae');
+
+    if(estadoCivil_fae === 'Casado'){
+        regimenContainer_fae.style.display = 'block';
+    }
+    else{
+        regimenContainer_fae.style.display ='none';
+        RegimenField.value = '';
     }
 }
 
@@ -68,16 +100,22 @@ function toggleTrabajadorOptions() {
     const tipoTrabajador = document.getElementById('tipo_trabajador_fisica').value;
     const contratoContainer = document.getElementById('tipo_contrato_container');
     const actividadContainer = document.getElementById('actividad_empresa_container');
+    const contratoField = document.getElementById('tipo_contrato_fisica');
+    const actividadField = document.getElementById('actividad_empresa_fisica');
 
     if (tipoTrabajador === 'Asalariado') {
         contratoContainer.style.display = 'block';
         actividadContainer.style.display = 'none';
+        actividadField.value = '';
     } else if (tipoTrabajador === 'Independiente') {
         contratoContainer.style.display = 'none';
         actividadContainer.style.display = 'block';
+        contratoField.value = '';
     } else {
         contratoContainer.style.display = 'none';
         actividadContainer.style.display = 'none';
+        contratoField.value = '';
+        actividadField.value = '';
     }
 }
 
@@ -90,7 +128,6 @@ window.onload = () => {
     toggleRegimenMatrimonial();
     toggleTrabajadorOptions();
 };
-
 
 // mostrarCampos cada vez que cambia el tipo de solicitante
 document.getElementById('tipo_solicitante').addEventListener('change', mostrarCampos);
@@ -105,6 +142,20 @@ form.addEventListener('submit', async function (event) {
     formData.forEach((value, key) => {
         data[key] = value;
     });
+
+    const tipo = {
+        fisica: 'fisica',
+        fisica_actividad_empresarial: 'fae',
+        moral: 'moral'
+    }[data.tipo_solicitante];
+
+    if (!tipo) {
+        console.error("Tipo de solicitante no válido.");
+        return;
+    }
+
+    // Agrega el domicilio completo
+    data[`domicilio_${tipo}_completo`] = obtenerDomicilioCompleto(data, tipo, true);
 
     const generateAndDownloadPdf = async (pdfFile, fileName, coordenadasCallback, data, xCoord) => {
         try {
@@ -138,7 +189,6 @@ form.addEventListener('submit', async function (event) {
                         });
                     }
                 }
-
                 if (fileName === 'AspiriaCredito.pdf' && pageIndex === 0) {
                     if (data.persona_fae === 'fisica') {
                         page.drawText('X', { x: 105, y: 624, size: 12 });
@@ -154,6 +204,15 @@ form.addEventListener('submit', async function (event) {
                         page.drawText('X', { x: 515, y: 426, size: 12 });
                     } else if (data.tiponegocio_fae === 'propio') {
                         page.drawText('X', { x: 95, y: 412, size: 12 });
+                    }
+                    if (data.estado_civil_fae === 'Soltero') {
+                        page.drawText('Soltero', { x: 105, y: 582, size: 10 });
+                    } else if (data.estado_civil_fae === 'Unión Libre') {
+                        page.drawText('Unión Libre', { x: 105, y: 582, size: 10 });
+                    } else if (data.estado_civil_fae === 'Casado') {
+                        page.drawText('Casado', { x: 105, y: 582, size: 10 });
+                    } else if (data.estado_civil_fae === 'Divorciado') {
+                        page.drawText('Divorciado', { x: 105, y: 582, size: 10 });
                     }
                 }
                 else if (fileName === 'HousolCreditoFisica.pdf' && pageIndex === 0) {
@@ -188,24 +247,28 @@ form.addEventListener('submit', async function (event) {
                     }
                     else if (data.estado_civil_fisica === 'Soltero'){
                         page.drawText('X', { x: 224.2 , y: 748.2, size: 10 });
-                    }
-                    else if (data.estado_civil_fisica === 'Unión Libre'){
+                    } else if (data.estado_civil_fisica === 'Unión Libre'){
                         page.drawText('X', { x: 270.2 , y: 748.2, size: 10 });
-                    }
-                    else if (data.estado_civil_fisica === 'Casado'){
+                    } else if (data.estado_civil_fisica === 'Casado'){
                         page.drawText('X', { x: 334 , y: 748.2, size: 10 });
-                    }
-                    else if (data.estado_civil_fisica === 'Divorciado'){
+                    } else if (data.estado_civil_fisica === 'Divorciado'){
                         page.drawText('X', { x: 224.2 , y: 733, size: 10 });
                     }
                     else if (data.tipo_contrato_fisica === 'Tiempo indefinido'){
                         page.drawText('X', { x: 126.5 , y: 663, size: 10 })
-                    }
-                    else if (data.tipo_contrato_fisica === 'Temporal'){
+                    } else if (data.tipo_contrato_fisica === 'Temporal'){
                         page.drawText('X', { x: 210.5 , y: 663, size: 10 })
-                    }
-                    else if (data.tipo_contrato_fisica === 'Otro'){
+                    } else if (data.tipo_contrato_fisica === 'Otro'){
                         page.drawText('X', { x: 263.2 , y: 663, size: 10 })
+                    }
+                    else if (data.sector_laboral_fisica === 'Privado'){
+                        page.drawText('X', { x: 360.5 , y: 631, size: 10 })
+                    } else if (data.sector_laboral_fisica === 'PublicoF'){
+                        page.drawText('X', { x: 403.5 , y: 631, size: 10 })
+                    } else if (data.sector_laboral_fisica === 'PublicoE'){
+                        page.drawText('X', { x: 475, y: 631, size: 10 })
+                    } else if (data.sector_laboral_fisica === 'PublicoM'){
+                        page.drawText('X', { x: 544 , y: 630.7, size: 10 })
                     }
                 }               
             });
@@ -234,10 +297,9 @@ form.addEventListener('submit', async function (event) {
             lugar_nacimiento_fae: { x: 250, y: 610, size: 10 },
             rfc_fae: { x: 75, y: 597, size: 10 },
             curp_fae: { x: 330, y: 597, size: 10 },
-            estado_civil_fae: { x: 105, y: 582, size: 10 },
             regimen_matrimonial_fae: { x: 385, y: 582, size: 10 },
             codigo_postal_fae: { x: 73, y: 528, size: 10 },
-            domicilio_fae: { x: 258, y: 528, size: 10 },
+            domicilio_fae_completo: { x: 258, y: 528, size: 10 },
             colonia_fae: { x: 427, y: 528, size: 10 },
             ciudad_fae: { x: 88, y: 514, size: 10 },
             municipio_fae: { x: 258, y: 514, size: 10 },
@@ -272,7 +334,7 @@ form.addEventListener('submit', async function (event) {
         0: {
             nombre_fisica: { x: 138, y: 563, size: 10 },
             rfc_fisica: { x: 78, y: 543, size: 10 },
-            domicilio_fisica: { x: 95, y: 524, size: 10 },
+            domicilio_fisica_completo: { x: 95, y: 524, size: 10 },
             colonia_fisica: { x: 90, y: 505, size: 10 },
             municipio_fisica: { x: 96, y: 486, size: 10 },
             estado_fisica: { x: 295, y: 486, size: 10 },
@@ -287,7 +349,7 @@ form.addEventListener('submit', async function (event) {
         2: {
             nombre_fisica: { x: 32, y: 482, size: 10 },
             rfc_fisica: { x: 32, y: 433, size: 10 },
-            domicilio_fisica: { x: 32, y: 408, size: 10 },
+            domicilio_fisica_completo: { x: 32, y: 408, size: 10 },
             colonia_fisica: { x: 32, y: 383, size: 10 },
             municipio_fisica: { x: 32, y: 359, size: 10 },
             estado_fisica: { x: 32, y: 334, size: 10 },
@@ -304,7 +366,7 @@ form.addEventListener('submit', async function (event) {
         2: {
             nombre_fae: { x: 32, y: 482, size: 10 },
             rfc_fae: { x: 32, y: 433, size: 10 },
-            domicilio_fae: { x: 32, y: 408, size: 10 },
+            domicilio_fae_completo: { x: 32, y: 408, size: 10 },
             colonia_fae: { x: 32, y: 383, size: 10 },
             municipio_fae: { x: 32, y: 359, size: 10 },
             estado_fae: { x: 32, y: 334, size: 10 },
@@ -322,7 +384,7 @@ form.addEventListener('submit', async function (event) {
             nombre_moral: { x: 32, y: 482, size: 10 },
             representante_moral: { x: 32, y: 458, size: 10 },
             rfc_moral: { x: 32, y: 433, size: 10 },
-            domicilio_moral: { x: 32, y: 408, size: 10 },
+            domicilio_moral_completo: { x: 32, y: 408, size: 10 },
             colonia_moral: { x: 32, y: 383, size: 10 },
             municipio_moral: { x: 32, y: 359, size: 10 },
             estado_moral: { x: 32, y: 334, size: 10 },
@@ -365,7 +427,7 @@ form.addEventListener('submit', async function (event) {
 
     const coordenadasCreditoHousolFisica = (pages) => ({
         0: {
-            desde_cuando: { x: 120, y: 898, size:  8 },
+            desde_cuando_fisica: { x: 120, y: 898, size:  8 },
             nombre_fisica: { x: 170, y: 898, size: 10 },
             apellido_paterno_fisica: { x: 320, y: 898, size: 10 },
             apellido_materno_fisica: { x: 455, y: 898, size: 10 },
@@ -528,7 +590,7 @@ form.addEventListener('submit', async function (event) {
         //await generateAndDownloadPdf('src/premo/archivoss2.pdf', 'PremoCuestionarioPF.pdf', coordenadasCuestionarioPF, data);
         //await generateAndDownloadPdf('src/premo/archivo.pdf', 'PremoAutorizacionPF.pdf', coordenadasAutorizacionPF, data);
     } else if (opcionPersona === 'fisica_actividad_empresarial') {
-        await generateAndDownloadPdf('src/aspiria/AspiriaCredito.pdf', 'AspiriaCredito.pdf', coordenadasAspiriaCredito, data);
+        //await generateAndDownloadPdf('src/aspiria/AspiriaCredito.pdf', 'AspiriaCredito.pdf', coordenadasAspiriaCredito, data);
         //await generateAndDownloadPdf('src/negocios/NegocioFormato.pdf', 'NegociosCreditoPFAE.pdf', coordenadasCreditoPFAE, data);
         //await generateAndDownloadPdf('src/premo/PremoSolicitudPF.pdf', 'PremoSolicitudPF.pdf', coordenadasPremoSolicitudPF, data);
         //await generateAndDownloadPdf('src/premo/PremoCuestionarioInicialPersonaFisica.pdf', 'PremoCuestionarioPFA.pdf', coordenadasCuestionarioPremoPF, data);
@@ -541,6 +603,4 @@ form.addEventListener('submit', async function (event) {
         //await generateAndDownloadPdf('src/premo/PremoSolicitudPM.pdf', 'PremoSolicitudMoral.pdf', CoordenadasPremoSolicitudPM, data);
         //await generateAndDownloadPdf('src/premo/PremoCuestionarioInicialPMO.pdf', 'PremoCuestionarioMoral.pdf', CoordenadasCuestionarioPremoMoral, data);
     }
-
-    
 });
