@@ -3,252 +3,523 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario con Plantilla PDF</title>
+    <title>Solicitud de crédito</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <h2>Solicitud de crédito</h2>
+    <img src="./src/img/logo.png" alt="ingenio">
+
     <form id="miFormulario">
-        <!-- Tipo de solicitante -->
+        <!-- Tipo de Solicitante -->
         <label for="tipo_solicitante">Tipo de Solicitante</label><br>
-        <select id="tipo_solicitante" name="tipo_solicitante">
+        <select id="tipo_solicitante" name="tipo_solicitante" onchange="mostrarCampos()">
+            <option value="">Seleccione el tipo de solicitante</option>
             <option value="fisica">Persona Física</option>
-            <option value="fisica_actividad_empresarial">Persona Física con Actividad Empresarial (PFAE)</option>
-            <option value="moral">Persona Moral (PM)</option>
+            <option value="fisica_actividad_empresarial">Persona Física con Actividad Empresarial</option>
+            <option value="moral">Persona Moral</option>
         </select><br><br>
 
-        <!--  Fecha -->
-        <label for="fechag">Fecha:</label><br>
-        <input type="date" id="fechag" name="fechag"><br><br>
+        <!-- Persona Física -->
+        <fieldset id="fisica" class="tipo-solicitante">
+            <legend>Persona Física</legend>
 
-        <!-- Datos Generales -->
-        <h3>Datos Generales</h3>
+            <label for="fechag_fisica">Fecha:</label><br>
+            <input type="date" id="fechag_fisica" name="fechag_fisica"><br><br>
 
-        <label for="monto">Monto:</label><br>
-        <input type="number" id="monto" name="monto"><br><br>
+            <!-- Datos Generales -->
+            <h3>Datos Generales</h3>
 
-        <label for="promocode">Promocode:</label><br>
-        <input type="text" id="promocode" name="promocode"><br><br>
+            <label for="cliente_housol_fisica">Es Cliente de Hausol?:</label><br>
+            <select id="cliente_housol_fisica" name="cliente_housol_fisica"  onchange="toggleDesdeCuando()">
+                <option value="">Seleccione</option>
+                <option value="si">Si</option>
+                <option value="no">No</option>
+            </select><br>
 
-        <label for="nombre">Nombre(s):</label><br>
-        <input type="text" id="nombre" name="nombre" required><br><br>
+            <div id="desde_cuando_container" style="display: none;">
+                <label for="desde_cuando">Desde cuándo:</label><br>
+                <input type="date" id="desde_cuando" name="desde_cuando">
+            </div>
+
+            <label for="nombre_fisica">Nombre(s):</label><br>
+            <input type="text" id="nombre_fisica" name="nombre_fisica"><br>
+
+            <label for="apellido_paterno_fisica">Apellido Paterno:</label><br>
+            <input type="text" id="apellido_paterno_fisica" name="apellido_paterno_fisica"><br>
+
+            <label for="apellido_materno_fisica">Apellido Materno:</label><br>
+            <input type="text" id="apellido_materno_fisica" name="apellido_materno_fisica"><br>
+
+            <label for="sexo_fisica">Sexo:</label><br>
+            <select id="sexo_fisica" name="sexo_fisica">
+                <option value="">Seleccione</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Femenino">Femenino</option>
+            </select><br>
+
+            <label for="rfc_fisica">RFC:</label><br>
+            <input type="text" id="rfc_fisica" name="rfc_fisica"><br>
+
+            <label for="curp_fisica">CURP:</label><br>
+            <input type="text" id="curp_fisica" name="curp_fisica"><br>
+
+            <label for="nss_fisica">Numero de Seguro Social:</label><br>
+            <input type="text" id="nss_fisica" name="nss_fisica"><br>
+
+            <label for="fecha_nacimiento_fisica">Fecha de Nacimiento:</label><br>
+            <input type="date" id="fecha_nacimiento_fisica" name="fecha_nacimiento_fisica"><br>
+
+            <label for="lugar_nacimiento_fisica">Lugar de Nacimiento:</label><br>
+            <input type="text" id="lugar_nacimiento_fisica" name="lugar_nacimiento_fisica"><br>
+
+            <label for="pais_nacimiento_fisica">País de Nacimiento:</label><br>
+            <input type="text" id="pais_nacimiento_fisica" name="pais_nacimiento_fisica"><br>
+
+            <label for="nacionalidad_fisica">Nacionalidad:</label><br>
+            <input type="text" id="nacionalidad_fisica" name="nacionalidad_fisica"><br>
+
+            <label for="escolaridad_fisica">Escolaridad:</label><br>
+            <input type="text" id="escolaridad_fisica" name="escolaridad_fisica"><br>
+
+            <label for="profesion_fisica">Ocupación o Profesión:</label><br>
+            <input type="text" id="profesion_fisica" name="profesion_fisica"><br>
+
+            <label for="email_fisica">Email:</label><br>
+            <input type="email" id="email_fisica" name="email_fisica"><br>
+
+            <label for="dependientes_fisica">Dependientes Económicos:</label><br>
+            <input type="number" id="dependientes_fisica" name="dependientes_fisica"><br>
+
+            <label for="estado_civil_fisica">Estado Civil:</label><br>
+            <select id="estado_civil_fisica" name="estado_civil_fisica" onchange="toggleRegimenMatrimonial()">
+                <option value="">Seleccione</option>
+                <option value="Soltero">Soltero</option>
+                <option value="Unión Libre">Unión Libre</option>
+                <option value="Casado">Casado</option>
+                <option value="Divorciado">Divorciado</option>
+            </select><br>
+
+            <!-- Contenedor para Régimen Matrimonial -->
+            <div id="regimen_matrimonial_container" style="display: none;">
+                <label for="regimen_matrimonial_fisica">Régimen Matrimonial:</label><br>
+                <input type="text" id="regimen_matrimonial_fisica" name="regimen_matrimonial_fisica"><br>
+            </div>
+
+            <!-- Contenedor para Pensión Alimenticia -->
+            <div id="pension_container" style="display: none;">
+                <label for="pension_fisica">Si paga pensión alimenticia, anote el importe mensual:</label><br>
+                <input type="text" id="pension_fisica" name="pension_fisica"><br>
+            </div>
+
+            <!-- Identificación -->
+            <h3>Identificación</h3>
+
+            <label for="identificacion_fisica">Tipo de Identificación Oficial:</label><br>
+            <input type="text" id="identificacion_fisica" name="identificacion_fisica"><br>
+
+            <label for="folio_identificacion_fisica">Número de Folio:</label><br>
+            <input type="text" id="folio_identificacion_fisica" name="folio_identificacion_fisica"><br>
+
+            <!-- Domicilio -->
+            <h3>Domicilio</h3>
+            <label for="domicilio_fisica">Domicilio:</label><br>
+            <input type="text" id="domicilio_fisica" name="domicilio_fisica"><br>
+
+            <label for="numero_exterior_fisica">Número Exterior:</label><br>
+            <input type="text" id="numero_exterior_fisica" name="numero_exterior_fisica"><br>
+
+            <label for="numero_interior_fisica">Número Interior:</label><br>
+            <input type="text" id="numero_interior_fisica" name="numero_interior_fisica"><br>
+
+            <label for="colonia_fisica">Colonia:</label><br>
+            <input type="text" id="colonia_fisica" name="colonia_fisica"><br>
+
+            <label for="municipio_fisica">Municipio:</label><br>
+            <input type="text" id="municipio_fisica" name="municipio_fisica"><br>
+
+            <label for="estado_fisica">Estado:</label><br>
+            <input type="text" id="estado_fisica" name="estado_fisica"><br>
+
+            <label for="ciudad_fisica">Ciudad:</label><br>
+            <input type="text" id="ciudad_fisica" name="ciudad_fisica"><br>
+
+            <label for="pais_fisica">País:</label><br>
+            <input type="text" id="pais_fisica" name="pais_fisica"><br>
+
+            <label for="codigo_postal_fisica">Código Postal:</label><br>
+            <input type="text" id="codigo_postal_fisica" name="codigo_postal_fisica"><br>
+
+            <label for="vivienda_tipo_fisica">Tipo de Vivienda:</label><br>
+            <select id="vivienda_tipo_fisica" name="vivienda_tipo_fisica" onchange="toggleConHipoteca()">
+                <option value="">Seleccione</option>
+                <option value="Propia">Propia</option>
+                <option value="Rentada">Rentada</option>
+                <option value="De padres o familiares">De padres o familiares</option>
+                <option value="Otra">Otra</option>
+            </select><br>
+
+            <div id="hipoteca_option" style="display: none;">
+                <label for="con_hipoteca">¿Con Hipoteca?</label><br>
+                <select id="con_hipoteca" name="con_hipoteca">
+                    <option value="si">Sí</option>
+                    <option value="no">No</option>
+                </select><br>
+            </div>
+
+            <label for="tiempo_residencia_fisica">Tiempo de Residencia (años):</label><br>
+            <input type="text" id="tiempo_residencia_fisica" name="tiempo_residencia_fisica"><br>
+
+            <!-- Empresa donde trabaja-->
+            <h3>Datos sobre su empleo</h3>
+
+            <label for="nombre_empresa_fisica">Nombre de la Empresa:</label><br>
+            <input type="text" id="nombre_empresa_fisica" name="nombre_empresa_fisica"><br>
+
+            <label for="domicilio_empresa_fisica">Domicilio de la Empresa:</label><br>
+            <input type="text" id="domicilio_empresa_fisica" name="domicilio_empresa_fisica"><br>
+
+            <label for="colonia_empresa_fisica">Colonia de la Empresa:</label><br>
+            <input type="text" id="colonia_empresa_fisica" name="colonia_empresa_fisica"><br>
+
+            <label for="codigo_postal_empresa_fisica">Código Postal de la Empresa:</label><br>
+            <input type="text" id="codigo_postal_empresa_fisica" name="codigo_postal_empresa_fisica"><br>
+
+            <label for="municipio_empresa_fisica">Municipio de la Empresa:</label><br>
+            <input type="text" id="municipio_empresa_fisica" name="municipio_empresa_fisica"><br>
+
+            <label for="estado_empresa_fisica">Estado de la Empresa:</label><br>
+            <input type="text" id="estado_empresa_fisica" name="estado_empresa_fisica"><br>
+
+            <label for="pais_empresa_fisica">País de la Empresa:</label><br>
+            <input type="text" id="pais_empresa_fisica" name="pais_empresa_fisica"><br>
+
+            <label for="tipo_trabajador_fisica">Tipo de Trabajador:</label><br>
+            <select id="tipo_trabajador_fisica" name="tipo_trabajador_fisica" onchange="toggleTrabajadorOptions()">
+                <option value="">Seleccione</option>
+                <option value="Asalariado">Asalariado</option>
+                <option value="Independiente">Independiente</option>
+            </select><br>
+
+            <!-- Contenedor para Tipo de Contrato -->
+            <div id="tipo_contrato_container" style="display: none;">
+                <label for="tipo_contrato_fisica">Tipo de contrato:</label><br>
+                <select id="tipo_contrato_fisica" name="tipo_contrato_fisica">
+                    <option value="">Seleccione</option>
+                    <option value="Tiempo indefinido">Tiempo indefinido</option>
+                    <option value="Temporal">Temporal</option>
+                    <option value="Otro">Otro</option>
+                </select><br>
+            </div>
+
+            <!-- Contenedor para Actividad o Profesión -->
+            <div id="actividad_empresa_container" style="display: none;">
+                <label for="actividad_empresa_fisica">Indique su actividad o profesión:</label><br>
+                <input type="text" id="actividad_empresa_fisica" name="actividad_empresa_fisica"><br>
+            </div>
+
+            <label for="giro_empresa_fisica">Giro de la Empresa:</label><br>
+            <input type="text" id="giro_empresa_fisica" name="giro_empresa_fisica"><br>
+
+            <label for="departamento_empresa_fisica">Departamento en la Empresa:</label><br>
+            <input type="text" id="departamento_empresa_fisica" name="departamento_empresa_fisica"><br>
+
+            <label for="puesto_empresa_fisica">Puesto en la Empresa:</label><br>
+            <input type="text" id="puesto_empresa_fisica" name="puesto_empresa_fisica"><br>
+
+            <label for="fecha_ingreso_empresa_fisica">Fecha de Ingreso a la Empresa:</label><br>
+            <input type="date" id="fecha_ingreso_empresa_fisica" name="fecha_ingreso_empresa_fisica"><br>
+
+            <label for="antiguedad_empresa_fisica">Antigüedad en la Empresa:</label><br>
+            <input type="text" id="antiguedad_empresa_fisica" name="antiguedad_empresa_fisica"><br>
+
+            <label for="telefono_empresa_fisica">Teléfono de la Empresa:</label><br>
+            <input type="tel" id="telefono_empresa_fisica" name="telefono_empresa_fisica"><br>
+
+            <label for="actividades_empresa_fisica">Actividades en la Empresa:</label><br>
+            <textarea id="actividades_empresa_fisica" name="actividades_empresa_fisica"></textarea><br>
+
+            <!-- Contacto -->
+            <h3>Contacto</h3>
+
+            <label for="telefono_fisica">Teléfono:</label><br>
+            <input type="text" id="telefono_fisica" name="telefono_fisica"><br>
+
+            <label for="celular_fisica">Celular:</label><br>
+            <input type="tel" id="celular_fisica" name="celular_fisica"><br>
+
+            <label for="telefono2_fisica">Teléfono 2:</label><br>
+            <input type="tel" id="telefono2_fisica" name="telefono2_fisica"><br>
+
+            <label for="extension_fisica">Extensión:</label><br>
+            <input type="text" id="extension_fisica" name="extension_fisica"><br>
+
+            <label for="ingresos_mensuales_fisica">Ingresos Mensuales:</label><br>
+            <input type="text" id="ingresos_mensuales_fisica" name="ingresos_mensuales_fisica"><br>
+
+            <label for="obligaciones_fisica">Obligaciones Financieras:</label><br>
+            <textarea id="obligaciones_fisica" name="obligaciones_fisica"></textarea><br>
+
+            <label for="patrimonio_fisica">Patrimonio:</label><br>
+            <textarea id="patrimonio_fisica" name="patrimonio_fisica"></textarea><br>
+            
+        </fieldset>
         
-        <label for="apellido_paterno">Apellido Paterno:</label><br>
-        <input type="text" id="apellido_paterno" name="apellido_paterno" required><br><br>
+        <!-- Persona Física con Actividad Empresarial -->
+        <fieldset id="fisica_actividad_empresarial" class="tipo-solicitante">
+            <legend>Persona Física con Actividad Empresarial</legend>
+            
+            <label for="monto_fae">Monto solictado:</label><br>
+            <input type="number" id="monto_fae" name="monto_fae"><br>
+
+            <label for="promocode_fae">Promocode de Aspiria:</label><br>
+            <input type="text" id="promocode_fae" name="promocode_fae"><br>
+
+            <!-- Datos del Representante legal -->
+            <h3>Datos del Representante legal</h3>
+
+            
+            <label for="persona_fae">Es Persona:</label><br>
+            <select id="persona_fae" name="persona_fae">
+                <option value="fisica">Fisica</option>
+                <option value="moral">Moral</option>
+            </select><br>
+
+            <label for="nombre_fae">Nombre(s):</label><br>
+            <input type="text" id="nombre_fae" name="nombre_fae"><br>
+
+            <label for="rfc_fae">RFC:</label><br>
+            <input type="text" id="rfc_fae" name="rfc_fae"><br>
+
+            <label for="fecha_nacimiento_fae">Fecha de Nacimiento:</label><br>
+            <input type="date" id="fecha_nacimiento_fae" name="fecha_nacimiento_fae"><br>
+
+            <label for="lugar_nacimiento_fae">Lugar de Nacimiento:</label><br>
+            <input type="text" id="lugar_nacimiento_fae" name="lugar_nacimiento_fae"><br>
+
+            <label for="curp_fae">CURP:</label><br>
+            <input type="text" id="curp_fae" name="curp_fae"><br>
+
+            <label for="email_fae">Email:</label><br>
+            <input type="email" id="email_fae" name="email_fae"><br>
+
+            <label for="estado_civil_fae">Estado Civil:</label><br>
+            <input type="text" id="estado_civil_fae" name="estado_civil_fae"><br>
+
+            <label for="regimen_matrimonial_fae">Régimen Matrimonial:</label><br>
+            <input type="text" id="regimen_matrimonial_fae" name="regimen_matrimonial_fae"><br>
+
+            <label for="domicilio_fae">Domicilio:</label><br>
+            <input type="text" id="domicilio_fae" name="domicilio_fae"><br>
+
+            <label for="colonia_fae">Colonia:</label><br>
+            <input type="text" id="colonia_fae" name="colonia_fae"><br>
+
+            <label for="ciudad_fae">Ciudad:</label><br>
+            <input type="text" id="ciudad_fae" name="ciudad_fae"><br>
+
+            <label for="municipio_fae">Municipio:</label><br>
+            <input type="text" id="municipio_fae" name="municipio_fae"><br>
+
+            <label for="estado_fae">Estado:</label><br>
+            <input type="text" id="estado_fae" name="estado_fae"><br>
+
+            <label for="codigo_postal_fae">Código Postal:</label><br>
+            <input type="text" id="codigo_postal_fae" name="codigo_postal_fae"><br>
+
+            <label for="telefono_fae">Teléfono:</label><br>
+            <input type="text" id="telefono_fae" name="telefono_fae"><br>
+
+            <label for="tipodomicilio_fae">El Domicilio es:</label><br>
+            <select id="tipodomicilio_fae" name="tipodomicilio_fae">
+                <option value="rento">Rentado</option>
+                <option value="propio">Propio</option>
+            </select><br>
+
+            <label for="tiempo_domicilio_fae">Tiempo en Domicilio:</label><br>
+            <input type="text" id="tiempo_domicilio_fae" name="tiempo_domicilio_fae"><br>
+            
+            <!-- Datos Del Negocio Operativo -->
+            <h3>Datos Del Negocio Operativo</h3>
+
+            <label for="nombre_negocio_fae">Nombre del Negocio:</label><br>
+            <input type="text" id="nombre_negocio_fae" name="nombre_negocio_fae"><br>
+
+            <label for="codigo_postal_negocio_fae">Código Postal del Negocio:</label><br>
+            <input type="text" id="codigo_postal_negocio_fae" name="codigo_postal_negocio_fae"><br>
+
+            <label for="domicilio_negocio_fae">Domicilio del Negocio:</label><br>
+            <input type="text" id="domicilio_negocio_fae" name="domicilio_negocio_fae"><br>
+
+            <label for="colonia_negocio_fae">Colonia del Negocio:</label><br>
+            <input type="text" id="colonia_negocio_fae" name="colonia_negocio_fae"><br>
+
+            <label for="ciudad_negocio_fae">Ciudad del Negocio:</label><br>
+            <input type="text" id="ciudad_negocio_fae" name="ciudad_negocio_fae"><br>
+
+            <label for="municipio_negocio_fae">Municipio del Negocio:</label><br>
+            <input type="text" id="municipio_negocio_fae" name="municipio_negocio_fae"><br>
+
+            <label for="telefono_negocio_fae">Teléfono del Negocio:</label><br>
+            <input type="text" id="telefono_negocio_fae" name="telefono_negocio_fae"><br>
+
+            <label for="estado_negocio_fae">Estado del Negocio:</label><br>
+            <input type="text" id="estado_negocio_fae" name="estado_negocio_fae"><br>
+
+            <label for="tiponegocio_fae">El Domicilio es:</label><br>
+            <select id="tiponegocio_fae" name="tiponegocio_fae">
+                <option value="rento">Rentado</option>
+                <option value="propio">Propio</option>
+            </select><br>
+
+            <label for="tiempo_negocio_fae">Tiempo en el Domicilio del Negocio:</label><br>
+            <input type="text" id="tiempo_negocio_fae" name="tiempo_negocio_fae"><br>
+
+            <!-- Funcionamiento del negocio -->
+            <h3>Funcionamiento del negocio</h3>
+
+            <label for="anos_funcionamiento_fae">Años de Funcionamiento:</label><br>
+            <input type="text" id="anos_funcionamiento_fae" name="anos_funcionamiento_fae"><br>
+
+            <label for="recurso_funcionamiento_fae">Uso del Recurso:</label><br>
+            <input type="text" id="recurso_funcionamiento_fae" name="recurso_funcionamiento_fae"><br>
+
+            <label for="ingresos_funcionamiento_fae">Ingresos Anuales:</label><br>
+            <input type="text" id="ingresos_funcionamiento_fae" name="ingresos_funcionamiento_fae"><br>
+
+            <label for="actividad_funcionamiento_fae">Actividad del Negocio:</label><br>
+            <input type="text" id="actividad_funcionamiento_fae" name="actividad_funcionamiento_fae"><br>
+            
+            <!-- Datos bancarios -->
+            <h3>Datos Bancarios</h3>
+
+            <label for="banco_fae">Banco:</label><br>
+            <input type="text" id="banco_fae" name="banco_fae"><br>
+
+            <label for="clabe_interbancaria_fae">CLABE Interbancaria:</label><br>
+            <input type="text" id="clabe_interbancaria_fae" name="clabe_interbancaria_fae"><br>
+
+            <!-- Referencias -->
+            <h3>Referencias</h3>
+
+            <label for="nombre_familiar1_fae">Nombre del Familiar 1:</label><br>
+            <input type="text" id="nombre_familiar1_fae" name="nombre_familiar1_fae"><br>
+
+            <label for="parentesco_familiar1_fae">Parentesco del Familiar 1:</label><br>
+            <input type="text" id="parentesco_familiar1_fae" name="parentesco_familiar1_fae"><br>
+
+            <label for="telefono_familiar1_fae">Teléfono del Familiar 1:</label><br>
+            <input type="text" id="telefono_familiar1_fae" name="telefono_familiar1_fae"><br>
+
+            <label for="nombre_familiar2_fae">Nombre del Familiar 2:</label><br>
+            <input type="text" id="nombre_familiar2_fae" name="nombre_familiar2_fae"><br>
+
+            <label for="parentesco_familiar2_fae">Parentesco del Familiar 2:</label><br>
+            <input type="text" id="parentesco_familiar2_fae" name="parentesco_familiar2_fae"><br>
+
+            <label for="telefono_familiar2_fae">Teléfono del Familiar 2:</label><br>
+            <input type="text" id="telefono_familiar2_fae" name="telefono_familiar2_fae"><br>
+        </fieldset>
+
+        <!-- Persona Moral -->
+        <fieldset id="moral" class="tipo-solicitante">
+            <legend>Persona Moral</legend>
+    
+            <label for="fechag_moral">Fecha:</label><br>
+            <input type="date" id="fechag_moral" name="fechag_moral"><br><br>
         
-        <label for="apellido_materno">Apellido Materno:</label><br>
-        <input type="text" id="apellido_materno" name="apellido_materno" required><br><br>
+            <!-- Datos Generales -->
+            <h3>Datos Generales</h3>
+            <label for="nombre_moral">Nombre(s):</label><br>
+            <input type="text" id="nombre_moral" name="nombre_moral"><br>
+
+            <label for="rfc_moral">RFC:</label><br>
+            <input type="text" id="rfc_moral" name="rfc_moral"><br>
+
+            <label for="representante_moral">Nombre del Representante Legal:</label><br>
+            <input type="text" id="representante_moral" name="representante_moral"><br>
+
+            <label for="fecha_constitucion_moral">Fecha de Constitución:</label><br>
+            <input type="date" id="fecha_constitucion_moral" name="fecha_constitucion_moral"><br>
+
+            <label for="fecha_registro_moral">Fecha de Registro:</label><br>
+            <input type="date" id="fecha_registro_moral" name="fecha_registro_moral"><br>
+
+            <label for="actividad_funcionamiento_moral">Actividad del Negocio:</label><br>
+            <input type="text" id="actividad_funcionamiento_moral" name="actividad_funcionamiento_moral"><br>
+
+            <label for="denominacion_social_moral">Razón o Denominación Social:</label><br>
+            <input type="text" id="denominacion_social_moral" name="denominacion_social_moral"><br>
+
+            <label for="pais_nacionalidad_moral">País de Nacionalidad:</label><br>
+            <input type="text" id="pais_nacionalidad_moral" name="pais_nacionalidad_moral"><br>
         
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email"><br><br>
+            <!-- Domicilio -->
+            <h3>Domicilio</h3>
+            <label for="domicilio_moral">Domicilio:</label><br>
+            <input type="text" id="domicilio_moral" name="domicilio_moral"><br>
 
-        <label for="fecha_nacimiento">Fecha de Nacimiento:</label><br>
-        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento"><br><br>
+            <label for="numero_exterior_moral">Número Exterior:</label><br>
+            <input type="text" id="numero_exterior_moral" name="numero_exterior_moral"><br>
 
-        <label for="lugar_nacimiento">Lugar de Nacimiento:</label><br>
-        <input type="text" id="lugar_nacimiento" name="lugar_nacimiento"><br><br>
+            <label for="numero_interior_moral">Número Interior:</label><br>
+            <input type="text" id="numero_interior_moral" name="numero_interior_moral"><br>
 
-        <label for="rfc">RFC:</label><br>
-        <input type="text" id="rfc" name="rfc"><br><br>
+            <label for="colonia_moral">Colonia:</label><br>
+            <input type="text" id="colonia_moral" name="colonia_moral"><br>
 
-        <label for="curp">CURP:</label><br>
-        <input type="text" id="curp" name="curp"><br><br>
+            <label for="municipio_moral">Municipio:</label><br>
+            <input type="text" id="municipio_moral" name="municipio_moral"><br>
 
-        <label for="estado_civil">Estado Civil:</label><br>
-        <input type="text" id="estado_civil" name="estado_civil"><br><br>
+            <label for="estado_moral">Estado:</label><br>
+            <input type="text" id="estado_moral" name="estado_moral"><br>
 
-        <label for="regimen_matrimonial">Régimen Matrimonial:</label><br>
-        <input type="text" id="regimen_matrimonial" name="regimen_matrimonial"><br><br>
+            <label for="ciudad_moral">Ciudad:</label><br>
+            <input type="text" id="ciudad_moral" name="ciudad_moral"><br>
 
-        <label for="pais_nacimiento">Pais de Nacimiento:</label><br>
-        <input type="text" id="pais_nacimiento" name="pais_nacimiento"><br><br>
+            <label for="codigo_postal_moral">Código Postal:</label><br>
+            <input type="text" id="codigo_postal_moral" name="codigo_postal_moral"><br>
 
-        <label for="nacionalidad">Nacionalidad:</label><br>
-        <input type="text" id="nacionalidad" name="nacionalidad"><br><br>
+            <label for="pais_moral">País:</label><br>
+            <input type="text" id="pais_moral" name="pais_moral"><br>
+        
+            <!-- Contacto -->
+            <h3>Contacto</h3>
+            <label for="telefono_moral">Teléfono:</label><br>
+            <input type="text" id="telefono_moral" name="telefono_moral"><br>
 
-        <label for="identificacion">Tipo de Identificación Oficial:</label><br>
-        <input type="text" id="identificacion" name="identificacion" ><br><br>
+            <label for="extension_moral">Extensión:</label><br>
+            <input type="text" id="extension_moral" name="extension_moral"><br>
 
-        <label for="folio_identificacion">Número de Folio:</label><br>
-        <input type="text" id="folio_identificacion" name="folio_identificacion" required><br><br>
+            <label for="celular_moral">Celular:</label><br>
+            <input type="tel" id="celular_moral" name="celular_moral"><br>
 
-        <label for="numero_exterior">Número Exterior:</label><br>
-        <input type="text" id="numero_exterior" name="numero_exterior" required><br><br>
+            <label for="telefono2_moral">Teléfono 2:</label><br>
+            <input type="tel" id="telefono2_moral" name="telefono2_moral"><br>
 
-        <label for="numero_interior">Número Interior:</label><br>
-        <input type="text" id="numero_interior" name="numero_interior"><br><br>
+            <label for="extension2_moral">Extensión 2:</label><br>
+            <input type="text" id="extension2_moral" name="extension2_moral"><br>            
 
-        <label for="celular">Celular:</label><br>
-        <input type="tel" id="celular" name="celular"><br><br>
+            <label for="email_empresarial_moral">Email Empresarial:</label><br>
+            <input type="email" id="email_empresarial_moral" name="email_empresarial_moral"><br>
 
-        <label for="telefono2">Teléfono 2:</label><br>
-        <input type="text" id="telefono2" name="telefono2"><br><br>
+            <!-- Identificación -->
+            <h3>Identificación</h3>
 
-        <label for="extension">Extension:</label><br>
-        <input type="text" id="extension" name="extension"><br><br>
+            <label for="identificacion_moral">Tipo de Identificación Oficial:</label><br>
+            <input type="text" id="identificacion_moral" name="identificacion_moral"><br>
 
+            <label for="folio_identificacion_moral">Número de Folio:</label><br>
+            <input type="text" id="folio_identificacion_moral" name="folio_identificacion_moral"><br>
 
+            <label for="Autoridad_moral">Autoridad Emisora:</label><br>
+            <input type="text" id="Autoridad_moral" name="Autoridad_moral"><br>
 
+        </fieldset>
 
 
-
-
-
-
-
-
-
-        <!-- Domicilio del Solicitante -->
-        <h3>Domicilio del Solicitante</h3>
-
-        <label for="codigo_postal">Código Postal:</label><br>
-        <input type="text" id="codigo_postal" name="codigo_postal" required><br><br>
-
-        <label for="domicilio">Domicilio:</label><br>
-        <input type="text" id="domicilio" name="domicilio" required><br><br>
-
-        <label for="colonia">Colonia:</label><br>
-        <input type="text" id="colonia" name="colonia" required><br><br>
-
-        <label for="ciudad">Ciudad:</label><br>
-        <input type="text" id="ciudad" name="ciudad" required><br><br>
-
-        <label for="municipio">Municipio:</label><br>
-        <input type="text" id="municipio" name="municipio" required><br><br>
-
-        <label for="estado">Estado:</label><br>
-        <input type="text" id="estado" name="estado" required><br><br>
-
-        <label for="pais">País:</label><br>
-        <input type="text" id="pais" name="pais" required><br><br>
-
-        <label for="tiempo_domicilio">Tiempo en Domicilio:</label><br>
-        <input type="text" id="tiempo_domicilio" name="tiempo_domicilio"><br><br>
-
-        <label for="telefono">Teléfono:</label><br>
-        <input type="text" id="telefono" name="telefono"><br><br>
-
-        <h3>El domicilio es: </h3>
-
-        <label>
-            <input type="radio" id="rentodomicilio" name="tipodomicilio" value="rento">
-            Rento
-        </label><br>
-
-        <label>
-            <input type="radio" id="propiodomicilio" name="tipodomicilio" value="propio">
-            Propio
-        </label><br> <br>
-
-        <!-- Datos del Negocio -->
-        <h3>Datos del Negocio</h3>
-
-        <label for="representante_moral">Nombre del Representante Legal:</label><br>
-        <input type="text" id="representante_moral" name="representante_moral"><br><br>
-
-        <label for="rfcs">RFC (Sin abreviaturas):</label><br>
-        <input type="text" id="rfcs" name="rfcs"><br><br>
-
-        <label for="nombre_negocio">Nombre del Negocio:</label><br>
-        <input type="text" id="nombre_negocio" name="nombre_negocio"><br><br>
-
-        <label for="codigo_postal_negocio">Código Postal del Negocio:</label><br>
-        <input type="text" id="codigo_postal_negocio" name="codigo_postal_negocio"><br><br>
-
-        <label for="domicilio_negocio">Domicilio del Negocio:</label><br>
-        <input type="text" id="domicilio_negocio" name="domicilio_negocio"><br><br>
-
-        <label for="colonia_negocio">Colonia del Negocio:</label><br>
-        <input type="text" id="colonia_negocio" name="colonia_negocio"><br><br>
-
-        <label for="ciudad_negocio">Ciudad del Negocio:</label><br>
-        <input type="text" id="ciudad_negocio" name="ciudad_negocio"><br><br>
-
-        <label for="municipio_negocio">Municipio del Negocio:</label><br>
-        <input type="text" id="municipio_negocio" name="municipio_negocio"><br><br>
-
-        <label for="estado_negocio">Estado del Negocio:</label><br>
-        <input type="text" id="estado_negocio" name="estado_negocio"><br><br>
-
-        <label for="tiempo_negocio">Tiempo en el Domicilio del Negocio:</label><br>
-        <input type="text" id="tiempo_negocio" name="tiempo_negocio"><br><br>
-
-        <label for="telefono_negocio">Teléfono del Negocio:</label><br>
-        <input type="text" id="telefono_negocio" name="telefono_negocio"><br><br>
-
-        <label for="anos_funcionamiento">Años de Funcionamiento:</label><br>
-        <input type="text" id="anos_funcionamiento" name="anos_funcionamiento"><br><br>
-
-        <label for="recurso_funcionamiento">Uso del Recurso:</label><br>
-        <input type="text" id="recurso_funcionamiento" name="recurso_funcionamiento"><br><br>
-
-        <label for="ingresos_funcionamiento">Ingresos Anuales:</label><br>
-        <input type="text" id="ingresos_funcionamiento" name="ingresos_funcionamiento"><br><br>
-
-        <label for="actividad_funcionamiento">Actividad del Negocio:</label><br>
-        <input type="text" id="actividad_funcionamiento" name="actividad_funcionamiento"><br><br>
-
-        <h3>El domicilio es: </h3>
-
-        <label>
-            <input type="radio" id="Rentonegocio" name="tiponegocio" value="rento">
-            Rento
-        </label><br>
-
-        <label>
-            <input type="radio" id="propionegocio" name="tiponegocio" value="propio">
-            Propio
-        </label><br><br>
-
-        <!-- Datos Bancarios -->
-        <h3>Datos Bancarios</h3>
-
-        <label for="banco">Banco:</label><br>
-        <input type="text" id="banco" name="banco"><br><br>
-
-        <label for="clabe_interbancaria">CLABE Interbancaria:</label><br>
-        <input type="text" id="clabe_interbancaria" name="clabe_interbancaria"><br><br>
-
-        <!-- Datos Familiares -->
-        <h3>Datos Familiares</h3>
-
-        <label for="nombre_familiar1">Nombre del Familiar 1:</label><br>
-        <input type="text" id="nombre_familiar1" name="nombre_familiar1"><br><br>
-
-        <label for="parentesco_familiar1">Parentesco del Familiar 1:</label><br>
-        <input type="text" id="parentesco_familiar1" name="parentesco_familiar1"><br><br>
-
-        <label for="telefono_familiar1">Teléfono del Familiar 1:</label><br>
-        <input type="text" id="telefono_familiar1" name="telefono_familiar1"><br><br>
-
-        <label for="nombre_familiar2">Nombre del Familiar 2:</label><br>
-        <input type="text" id="nombre_familiar2" name="nombre_familiar2"><br><br>
-
-        <label for="parentesco_familiar2">Parentesco del Familiar 2:</label><br>
-        <input type="text" id="parentesco_familiar2" name="parentesco_familiar2"><br><br>
-
-        <label for="telefono_familiar2">Teléfono del Familiar 2:</label><br>
-        <input type="text" id="telefono_familiar2" name="telefono_familiar2"><br><br>
-
-        <!-- Datos adicionales (de los otros documentos) -->
-        <h3>Datos Adicionales</h3>
-
-        <label for="folio_consulta_bc">Folio de Consulta del Buró de Crédito:</label><br>
-        <input type="text" id="folio_consulta_bc" name="folio_consulta_bc"><br><br>
-
-        <label for="fecha_consulta_bc">Fecha de Consulta del Buró de Crédito:</label><br>
-        <input type="date" id="fecha_consulta_bc" name="fecha_consulta_bc"><br><br>
-
-        <!-- Datos adicionales (de los otros documentos) -->
-        <label for="fecha_constitucion">Fecha de Constitución:</label><br>
-        <input type="date" id="fecha_constitucion" name="fecha_constitucion"><br><br>
-
-        <label for="fecha_registro">Fecha de Registro en el Registro Público:</label><br>
-        <input type="date" id="fecha_registro" name="fecha_registro"><br><br>
-
-        <label for="autoridad_emisora">Autoridad Emisora:</label><br>
-        <input type="text" id="autoridad_emisora" name="autoridad_emisora"><br><br>
-
-        <input type="submit" id="submitButton" value="Generar PDF" disabled>
+        <!-- Botón de envío -->
+        <input type="submit" value="Enviar">
     </form>
 
     <!-- Cargar librería PDF-Lib -->
